@@ -1,0 +1,54 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class variableSwitch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		double num1, num2;
+		int opcio;
+		
+		System.out.println("---MENU---");
+		System.out.println("1.- Suma");
+		System.out.println("2.- Resta");
+		System.out.println("3.- Multiplicació");
+		System.out.println("4.- Divisió");
+		System.out.println("Introdueixi dos numeros");
+		num1 = sc.nextDouble();
+		num2 = sc.nextDouble();
+		
+		
+		System.out.println("Introdueixi la operació (1-4)");
+		opcio = sc.nextInt();
+		
+		switch (opcio) {
+		
+		case 1 :
+			System.out.println("La suma és: " + (num1+num2));
+			break;
+		
+		case 2 :
+			System.out.println("La resta és: " + (num1-num2));
+			break;
+		
+		case 3 :
+			System.out.println("La multiplicació és: " + (num1*num2));
+			break;
+			
+		case 4 :
+			System.out.println("La divisió és: " + (num1/num2));
+			break;
+			
+		default :
+			System.out.println("Opció incorrecta");
+		}
+		
+		sc.close();
+
+	}
+
+}

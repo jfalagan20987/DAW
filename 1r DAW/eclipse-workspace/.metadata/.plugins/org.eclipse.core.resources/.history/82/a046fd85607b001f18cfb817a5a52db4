@@ -1,0 +1,24 @@
+package NewPackage;
+
+public class Boolea {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(58 + 5.5);
+		System.out.println(58 - 5.5);
+		System.out.println(58 * 5.5);
+		System.out.println(58 / 5.0);
+		System.out.println(58 % 5);
+		
+		System.out.println(true && false);
+		System.out.println(true || false);
+		System.out.println(!true);
+		
+		System.out.println("Hola" + " Josep");
+		
+		System.out.println((3+6)*7);
+		
+		System.out.println('a');
+	}
+
+}

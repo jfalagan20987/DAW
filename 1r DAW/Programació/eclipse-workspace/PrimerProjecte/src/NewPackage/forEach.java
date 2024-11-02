@@ -1,0 +1,24 @@
+package NewPackage;
+
+public class forEach {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int[] dades = {2,5,78,234,9,5,635,7,45,6345,6,5};
+		
+		for (int i =0 ; i<dades.length ; i++) {
+			if (dades[i] ==7) {
+				continue;
+			}
+			System.out.print(dades[i] + " ");
+		}
+		
+		//for (int i : dades) {
+		//	System.out.println(i + " ");
+		//}
+		
+		System.out.println("He sortit del bucle");
+	}
+
+}

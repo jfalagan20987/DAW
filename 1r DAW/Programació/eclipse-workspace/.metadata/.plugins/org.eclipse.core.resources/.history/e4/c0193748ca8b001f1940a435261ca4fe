@@ -1,0 +1,48 @@
+/**
+ * <h2>Programa càlcul de descomptes</h2>
+ *  
+ *  El programa demanarà el preu de la compra i mostrarà al final el preu a pagar amb el descompte fet, si es compleix la condició per aplicar-lo.
+ *  
+ *  Cerca info a javadoc a <a href="https://google.com">GOOGLE</a>
+ *  @since 23-10-2023
+ *  @version 1.0
+ *  @author Josep
+ *  @see <a href="https://google.com">Google</a>
+ */
+
+import java.util.Scanner;
+//Un programa que calcula descomptes.
+public class Descompte {
+	//Es fa un descompte del 8%.
+	
+	/**
+	 * Constant per posar el percentatge de descompte aplicat
+	 */
+	public static final float DESCOMPTE = 8;
+	//Es fa descompte per compres d'un mínim de 100 euros.
+	
+	/**
+	 * Constant per indicar el preu mínim a partir del qual es fa el descompte
+	 */
+	public static final float COMPRA_MIN = 100;
+	
+	/**
+	 * Funció principal del programa
+	 * @param args La funció main té els paràmetres habituals
+	 */
+	public static void main (String[] args) {
+		Scanner lector = new Scanner(System.in);
+		System.out.print("Quin és el preu del producte, en euros?");
+		float preu = lector.nextFloat();
+		lector.nextLine();
+		
+		//Estructura de selecció simple.
+		//Si l&#39;expressió avalua true, executa el bloc dins l'if.
+		//En cas contrari, ignora'l.
+		if (preu >= COMPRA_MIN) {
+			float descompteFet = preu * DESCOMPTE / 100;
+			preu = preu - descompteFet;
+		}
+		System.out.println("El preu final per pagar és de " + preu + " euros ");
+	}
+} 	

@@ -1,0 +1,30 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class MostraInterval_Exercici4_13 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int n1=0, n2=0;
+		
+		do {
+			System.out.println("Introdueix dos nombres, primer el més petit i després el més gran:");
+			n1 = sc.nextInt();
+			n2 = sc.nextInt();
+		} while (n1 > n2);
+			System.out.println("Dada correcte.");
+			
+		
+		for (int interval = n1; interval <= n2 ; interval++) {
+			System.out.println("El nombres entre " +n1+ " i " +n2+ " són: " +interval);
+		}
+		
+		sc.close();
+
+	}
+
+}

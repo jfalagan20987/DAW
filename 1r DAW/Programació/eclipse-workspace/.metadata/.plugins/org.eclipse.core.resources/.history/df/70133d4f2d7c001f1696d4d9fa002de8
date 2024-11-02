@@ -1,0 +1,18 @@
+package NewPackage;
+
+public class CalculQuadrat {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int costat;
+		costat = 9;
+		
+		int n = 4;
+		int perimetre = 0;
+		//n equival al nombre de costats
+		perimetre = costat * n;
+		System.out.println(perimetre);
+
+	}
+
+}

@@ -1,0 +1,24 @@
+package NewPackage;
+
+public class AvaluadorExpressions {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a=5;
+		int b=9;
+		int c=3;
+		int d=4;
+		
+		System.out.print("2-a*b+c= ");
+		System.out.println(2 - a * b + c);
+		
+		System.out.print("(2-a)*b+c= ");
+		System.out.println((2 - a) * b + c);
+		
+		System.out.print("a*b-c*a-d= ");
+		System.out.println(a * b - c * a - d);
+		
+
+	}
+
+}

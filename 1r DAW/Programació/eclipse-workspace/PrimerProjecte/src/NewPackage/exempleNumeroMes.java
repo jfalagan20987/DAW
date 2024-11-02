@@ -1,0 +1,55 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class exempleNumeroMes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int dies1=28, dies2=29, dies3=30, dies4=31;
+		
+		int numMes=0;
+		
+		System.out.println("Introdueix el número de mes:");
+		if (sc.hasNextInt()==true) {
+			numMes = sc.nextInt();
+		}
+		else {
+			System.out.println("Tipus de dada introduit és incorrecte!");
+		}
+		
+		if ((numMes >= 1) && (numMes <= 12)) {
+			switch (numMes) {
+			
+			case 1:
+				if (numMes == 2) {
+					System.out.println("El mes té: " +dies1+ " dies.");	
+				}break;
+			case 2:
+				if (numMes == 2) {
+					System.out.println("El mes té: " +dies2+ " dies.");	
+				}break;
+			case 3:
+				if ((numMes == 4) || (numMes == 6) || (numMes == 9) || (numMes == 11)) {
+					System.out.println("El mes té: " +dies3+ " dies.");
+				}break;
+			case 4:
+				if ((numMes == 1) || (numMes == 3) || (numMes == 5) || (numMes == 7) || (numMes == 8) || (numMes == 10) || (numMes == 12)) {
+					System.out.println("El mes té:" +dies4+ " dies.");
+				}
+			default:
+				System.out.println("Opció incorrecta");
+			}
+		
+		}
+		else {
+			System.out.println("El nombre de mes introduit ha de tenir un valor entre 1 i 12!");
+		}
+		sc.close();
+
+	}
+
+}

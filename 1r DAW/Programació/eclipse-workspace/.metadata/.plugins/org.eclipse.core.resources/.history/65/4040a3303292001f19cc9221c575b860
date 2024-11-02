@@ -1,0 +1,21 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_17 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introdueix un nombre enter:");
+		int nombre = sc.nextInt();
+		
+		for (int resultat = nombre ; resultat <= nombre ; resultat = resultat/2) {
+			System.out.println(nombre%resultat);
+		}
+
+		}
+	
+	}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularis</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <form action="#" method="get">
+        <p>
+            <label for="name">Nom</label>
+            <input type="text" name="Nom" id="name">
+        </p>
+        <p>
+            <label for="age">Edat</label>
+            <input type="number" name="Edat" id="age" min="18" max="300">
+        </p>
+        <p>
+            <input type="radio" name="salutacio" id="salutacio" value="1"> Hola
+            <input type="radio" name="salutacio" id="salutacio" value="2"> Adéu
+            <!--"podem afegir "checked" al final de cada opció per a que aparegui marcada per defecte-->
+        </p>
+        <p>
+            <input type="checkbox" name="cond" id="cond" value="1" required> Accepto les condicions
+            <input type="checkbox" name="cond" id="cond" value="2"> No accepto les condicions
+        </p>
+        <p>
+            <label for="descripcio"></label>
+            <textarea name="descripcio" id="descripcio" rows="20" cols="20" placeholder="Entra una descripció..."></textarea>
+        </p>
+        <p>
+            <label for="tipusVia"></label>
+            <select name="tipusVia" id="tipusVia">
+                <option value="carrer">Carrer</option>
+                <option value="avinguda">Avinguda</option>
+            </select>
+            <input type="text" name="via" id="via">
+        </p>
+        <p>
+            <label for="pais">País</label>
+            <input list="paisos" name="pais" id="pais" required>
+            <datalist id="paisos">
+                <option value="Portugal">Portugal</option>
+                <option value="Espanya">Espanya</option>
+                <option value="UK">UK</option>
+            </datalist>
+        </p>
+        <p>
+            <input type="submit" value="Envia">
+            <button>Cancel·la</button>
+        </p>
+    </form>
+	
+	
+	<!--com entrar vídeos-->
+	<video width="800px" controls>
+		<source src="entrar ruta fitxers" type="">
+		<track kind="subtitles" src="" lang="es" label="Español" default>
+	</video>
+	
+	
+	<iframe></iframe>
+	
+	<audio src="" controls autoplay loop muted></audio>
+</body>
+</html>

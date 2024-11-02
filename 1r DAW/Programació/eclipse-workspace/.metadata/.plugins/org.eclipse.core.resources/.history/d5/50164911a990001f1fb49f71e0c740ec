@@ -1,0 +1,28 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class CercarDivisor_Exercici4_14 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int i = 0;
+		int divisor = 0;
+		do {
+			System.out.println("Introdueix un nombre més gran que 1:");
+			i = sc.nextInt();
+		} while (divisor > 1);
+			System.out.println("Dada correcte!");
+		
+		
+		for (divisor = i-1 ; divisor > 1 ; divisor--) {
+			int modul = i%divisor;
+			if (modul == 0) {
+				System.out.println("El divisor és: " +divisor);
+				break;
+			}
+		}
+			}
+	}

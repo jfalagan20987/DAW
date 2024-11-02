@@ -1,0 +1,24 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_17 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introdueix un nombre enter:");
+		int nombre = sc.nextInt();
+		
+		int divisor = nombre/2;
+		while (divisor <= nombre) {
+			System.out.println(nombre%divisor);
+			
+			divisor = divisor/2;
+		}
+	
+	}
+
+	}

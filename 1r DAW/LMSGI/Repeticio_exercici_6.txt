@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Repetició Exercici 6</title>
+</head>
+<body>
+	<table border="1">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th colspan="2">Address</th>
+			<th>Image</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="2">John</td>
+			<td>25</td>
+			<td rowspan="2">123 Main St</td>
+			<td rowspan="2">City, Country</td>
+			<td rowspan=2><img src="https://via.placeholder.com/120" alt="Imatge 102x120"></td>
+		</tr>
+		<tr>
+			<td>Male</td>
+		</tr>
+		<tr>
+			<td rowspan="3">Mary</td>
+			<td>30</td>
+			<td>456 Elm St</td>
+			<td>Another City, Country</td>
+			<td rowspan=3><img src="https://via.placeholder.com/120" alt="Imatge 102x120"></td>
+		</tr>
+		<tr>
+			<td rowspan="2">Female</td>
+			<td>789 Oak St</td>Yet Another City, Country</td>
+		</tr>
+		<tr>
+			<td>101 Pine St</td>
+			<td>One More City, Country</td>
+		</tr>
+	</tbody>
+	</table>
+	
+	<hr>
+	
+	<table border="1">
+		<colgroup>
+			<col span="1" style="background-color: #fff07c" width="100px">
+			<col span="1" style="background-color: #b0d0d3">
+			<col span="1" style="background-color: #c08497" width="180px">
+		</colgroup>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Occupation</th>
+			<th>Location</th>
+		</tr>
+		<tr>
+			<td>Alice</td>
+			<td>Software Engineer</td>
+			<td>New York</td>
+		</tr>
+		<tr>
+			<td>Bob</td>
+			<td>Graphic Designer</td>
+			<td>Los Angeles</td>
+		</tr>
+		<tr>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</table>
+</body>
+</html>

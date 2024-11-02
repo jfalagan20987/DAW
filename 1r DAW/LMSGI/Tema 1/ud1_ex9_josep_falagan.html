@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ud1_ex9_josep_falagan</title>
+    <style>
+        .red{
+        color: #BF0000;
+        }
+    </style>
+</head> 
+<body>
+<header>
+    <h1>Formulari d'inscripció a la cursa XYZ</h1>
+</header>
+<main>
+    <form action="#" method="get">
+	<fieldset>
+    <legend><h2>Dades de la persona participant</h2></legend>
+        <p>
+            <label for="name">Nom:<span class="red">*</span></label>
+            <input type="text" name="name" id="name" minlength="2" maxlength="30" autocomplete="off" required>
+        </p>
+        <p>
+            <label for="name">Cognom:<span class="red">*</span></label>
+            <input type="text" name="cognom" id="cognom" minlength="2" maxlength="50" autocomplete="off" required>
+        </p>
+        <p>
+            <label for="dni">DNI:<span class="red">*</span></label>
+            <input type="text" name="dni" id="dni" minlength="9" maxlength="9" autocomplete="off" required>
+        </p>
+        <p>
+            <label for="tlfn">Telèfon:<span class="red">*</span></label>
+            <input type="tel" name="tlfn" id="tlfn" maxlength="100" autocomplete="off" required>
+        </p>
+        <p>
+            <label for="datanaix">Data de naixement:<span class="red">*</span></label>
+            <input type="date" name="datanaix" id="datanaix" min="1900-01-01" max="2024-10-09" required>
+        </p>
+        <p>
+            <label for="genere">Gènere:<span class="red">*</span></label>
+            <input type="radio" name="genere" id="genere" value="1" required> Dona
+            <input type="radio" name="genere" id="genere" value="2"> Home
+            <input type="radio" name="genere" id="genere" value="3"> No binari
+        </p>
+        <p>
+            <label for="tipusVia">Adreça:<span class="red">*</span></label>
+            <datalist id="tipusVia">
+                <option value="carrer">Carrer</option>
+                <option value="avinguda">Avinguda</option>
+                <option value="carretera">Carretera</option>
+                <option value="ronda">Ronda</option>
+                <option value="autopista">Autopista</option>
+                <option value="rambla">Rambla</option>
+                <option value="cami">Camí</option>
+            </datalist>
+            <input list="tipusVia" name="tipusVia" id="tipusVia" autocomplete="off" required>
+            <input type="number" name="tipusVia" id="tipusVia" min="0" max="999" step="1" required>
+        </p>
+        <p>
+            <label for="poblacio">Població:<span class="red">*</span></label>
+            <select name="poblacio" id="poblacio" required>
+                <option value="alaior">Alaior</option>
+                <option value="ciutadella">Ciutadella</option>
+                <option value="esCastell">Es Castell</option>
+                <option value="esMercadal">Es Mercadal</option>
+                <option value="esMigjorn">Es Migjorn Gran</option>
+                <option value="ferreries">Ferreries</option>
+                <option value="mao">Maó</option>
+                <option value="santLluis">Sant Lluis</option>
+                <option value="altres">Altres</option>
+            </select>
+            <label for="codiPostal">Codi Postal:</label>
+            <input type="number" name="codiPostal" id="codiPostal"  min="0" max="99999" required>
+        </p>
+        <p>
+            <label for="club">Club:<span class="red">*</span></label>
+            <input type="text" name="club" id="club" required>
+        </p>
+        <p>
+            <label for="talla">Talla:<span class="red">*</span></label>
+            <select name="talla" id="talla" required>
+                <option value="xs">XS</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+        </p>
+    </fieldset>
+    <fieldset>
+    <legend><h2>Dades de la cursa</h2></legend>
+		<p>
+			<label for="circuit">Circuit (verd, blau o vermell):<span class="red">*</span></label>
+		</p>
+		<p>
+			<input type="radio" name="circuit" id="circuit" value="1" required> Cursa mini (verd 1.700 m aprox.)
+		</p>
+		<p>
+			<input type="radio" name="circuit" id="circuit" value="2"> Cursa mitjana (blau 4.995 m aprox.)
+		</p>
+		<p>
+			<input type="radio" name="circuit" id="circuit" value="3"> Cursa gran (vermell 10.000 m aprox.)
+		</p>
+		<p>
+			<label for="comentaris">Comentaris:</label>
+		</p>
+		<p>
+			<textarea name="comentaris" id="comentaris" maxlength="200" rows="10" cols="50" placeholder="Màxim 200 caràcters"></textarea>
+		</p>
+    </fieldset>
+		<p>
+			<input type="checkbox" name="cond" id="cond" required> Accepto i assumeixo les normes de participació que regulen la Cursa Popular Ciutat de XYZ.
+		</p>
+		<p>
+			<input type="checkbox" name="info" id="info" required> Estic interessat/da en rebre informació sobre les activitats esportives organitzades per l’Ajuntament i dono el meu consentiment per a la tramesa d’informació al respecte.
+		</p>
+		<p>
+			<input type="submit" value="Envia">
+		</p>
+	</form>
+</main>
+</body>
+</html>

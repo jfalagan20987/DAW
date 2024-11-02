@@ -1,0 +1,31 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_17 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introdueix un nombre enter:");
+		int nombre = sc.nextInt();
+		
+		
+		final int divisor = 2;
+		
+		int modul = nombre%divisor;
+		
+		for (int i = nombre/divisor ; i>=1 ; i--) {
+			if(i==1) {
+				break;
+			}
+			System.out.println(modul);
+		}
+		
+		sc.close();
+
+	}
+
+}

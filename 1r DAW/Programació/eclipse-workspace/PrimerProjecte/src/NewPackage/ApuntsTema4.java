@@ -1,0 +1,31 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class ApuntsTema4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int nombre = 0;
+		final int NOMBRE_SECRET = 7;
+		
+		boolean encertat = false;
+		
+		while (!encertat) {
+			System.out.println("Introdueix un nombre:");
+			nombre = sc.nextInt();
+			
+			if (nombre == NOMBRE_SECRET) {
+				System.out.println("L'has encertat!");
+				encertat = true;
+			}else {
+				System.out.println("No l'has encertat!");
+			}
+		}
+		
+
+	}
+
+}

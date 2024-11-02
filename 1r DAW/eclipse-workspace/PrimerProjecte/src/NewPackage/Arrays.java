@@ -1,0 +1,21 @@
+package NewPackage;
+
+public class Arrays {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double[] nombres = {30.1, 15.3, 8.6, 1.3, 70.0, 55.8};
+		System.out.print("La suma de les posicions 0, 2 i 4 és = ");
+		System.out.println(nombres [0] + nombres [2] + nombres [4]);
+		
+		System.out.print("La suma de les posicions 1, 3 i 5 és = ");
+		System.out.println(nombres [1] + nombres [3] + nombres [5]);
+		
+		double[] notes = {7.5, 6.8, 9.3};
+		System.out.print("La nota final (mitjana de les tres notes) de l'alumne és: ");
+		System.out.println((notes [0] + notes [1] + notes [2]) / 3);
+
+	}
+
+}

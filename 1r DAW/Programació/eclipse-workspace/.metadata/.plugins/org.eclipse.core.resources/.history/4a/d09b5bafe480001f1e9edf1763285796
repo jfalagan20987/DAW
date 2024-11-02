@@ -1,0 +1,20 @@
+package NewPackage;
+
+public class TaulaAB {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("A	B	A||B");
+		
+		boolean A = false;
+		boolean B = false;
+		System.out.println(A+"\t"+B+"\t"+(A||B));
+		
+		boolean A1 = false;
+		boolean B1 = true;
+		System.out.println(A1+"\t"+B1+"\t"+(A1||B1));
+
+	}
+
+}

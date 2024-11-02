@@ -1,0 +1,14 @@
+package NewPackage;
+
+public class Ex24 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String cadena = "Hola Món!";
+		System.out.println(cadena.charAt(cadena.length()-1));
+		
+
+	}
+
+}

@@ -1,0 +1,21 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Ex24 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner lector = new Scanner(System.in);
+		
+		String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		int abecedari;
+		
+		System.out.println("Introdueix una lletra de l'abecedari:");
+		abecedari = lector.nextInt();
+		System.out.print("La següent lletra és:");
+		System.out.println(abc.charAt(abecedari+1));
+	}
+
+}

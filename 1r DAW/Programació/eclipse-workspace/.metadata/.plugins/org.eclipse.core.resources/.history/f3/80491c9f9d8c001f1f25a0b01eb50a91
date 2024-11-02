@@ -1,0 +1,28 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_9 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Quin és el dividend?");
+		int dividend = sc.nextInt();
+		
+		System.out.println("Quinés el divisor?");
+		int divisor = sc.nextInt();
+		
+		while (dividend >= divisor) {
+			dividend = dividend - divisor;
+			System.out.println("Bucle: per ara el dividend val " + dividend + ".");
+		}
+		System.out.println("El resultat final és " + dividend + ".");
+		
+		sc.close();
+
+	}
+
+}

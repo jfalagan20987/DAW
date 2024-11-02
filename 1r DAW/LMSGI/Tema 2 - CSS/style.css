@@ -1,0 +1,66 @@
+/* Tipus de selectors */
+* {
+  margin: 0;
+  /* top, right, bottom, left */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.divExterior {
+  display: inline-block;
+  width: calc(100% - 20px);
+  height: 200px;
+
+  /* height i width de la meva pantalla */
+    /* height: 100vH */
+    /* width: 100vW */
+
+  margin: 10px 0 10px 0;
+}
+
+body {
+  color: lightcoral;
+}
+
+p {
+  font-size: 30px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Selector universal */
+* {
+  margin: 0;
+  accent-color: black;
+  list-style: none;
+}
+
+/* Selector amb id */
+#container {
+  background-color: antiquewhite;
+}
+
+/* Selector de classe */
+.element {
+  font-weight: bold;
+}
+
+ul li {
+  text-decoration: underline;
+}
+
+main div {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input[type="text"] {
+  background-color: aquamarine;
+}
+
+a[href="https:"] {
+
+}
+
+header, footer {
+  background-color: aqua;
+}

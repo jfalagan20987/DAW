@@ -1,0 +1,25 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Ex20 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner lector = new Scanner(System.in);
+		int nombreReal;
+		
+		System.out.println("introdueix el primer nombre:");
+		nombreReal = lector.nextInt();
+		System.out.println("El primer nombre és: " + nombreReal);
+		System.out.println("introdueix el segon nombre:");
+		nombreReal = lector.nextInt();
+		System.out.println("El segon nombre és: " + nombreReal);
+		System.out.println("introdueix el tercer nombre:");
+		nombreReal = lector.nextInt();
+		System.out.println("El tercer nombre és: " + nombreReal);
+
+	}
+
+}

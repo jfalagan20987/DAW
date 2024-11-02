@@ -1,0 +1,19 @@
+package NewPackage;
+
+public class ExercicisTema3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int m = 23;
+		int n = 12;
+		int resultat = 0;
+		resultat = m + n;
+		System.out.println(resultat);
+		
+		int resultat = 35;
+		int m= 5;
+		System.out.println(resultat-=m);
+
+	}
+
+}

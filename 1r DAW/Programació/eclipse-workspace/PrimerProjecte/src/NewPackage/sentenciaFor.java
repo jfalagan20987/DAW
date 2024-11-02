@@ -1,0 +1,21 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class sentenciaFor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		for (int j = 1 ; j<=10 ; j++) {
+			for (int i = 0 ; i<=10 ; i++) {
+				System.out.println(j + " x " + i + " = " + (j*i));
+			}
+			System.out.println("*************");
+		}
+		
+
+	}
+
+}

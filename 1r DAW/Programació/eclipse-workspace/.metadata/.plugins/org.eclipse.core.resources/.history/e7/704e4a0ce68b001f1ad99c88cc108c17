@@ -1,0 +1,17 @@
+package NewPackage;
+
+public class Exercici4_8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		final int i = 5;
+		int x = 10;
+		
+		while (x >= i)
+			System.out.println(x * i);
+			x = x - 1;
+
+	}
+
+}

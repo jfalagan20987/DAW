@@ -1,0 +1,17 @@
+package NewPackage;
+public class Exercici4_7 {
+	public static void main (String[] args) {
+		//Inicialitzem un comptador
+		int i = 0;
+		//Ja hem fet això 100 cops?
+		while (i < 100) {
+			if ((i%10)==0) {
+				System.out.print('-');
+				//Ho hem fet un cop, sumem 1 al comptador
+				i = i + 1;
+		}
+		//Forcem un salt de línia
+		System.out.println();
+		}
+
+}

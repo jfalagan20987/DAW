@@ -1,0 +1,26 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int limit = sc.nextInt();
+		
+		int i = 0;
+		while (i < limit) {
+			System.out.print('-');
+			
+			i = i + 1;
+		}
+		
+		
+		sc.close();
+
+	}
+
+}

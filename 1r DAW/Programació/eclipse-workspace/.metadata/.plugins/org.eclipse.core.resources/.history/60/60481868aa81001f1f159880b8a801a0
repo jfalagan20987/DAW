@@ -1,0 +1,13 @@
+package NewPackage;
+
+public class Ex22UpperCase {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String cadena = "Hola Món!";
+		System.out.println(cadena.charAt(-1));
+
+	}
+
+}

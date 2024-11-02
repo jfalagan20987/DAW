@@ -1,0 +1,21 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		final int NOMBRE_SECRET = 7;
+		
+		System.out.println("Introdueix el nombre secret:");
+		int i = sc.nextInt();
+		
+		sc.close();
+
+	}
+
+}

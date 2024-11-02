@@ -1,0 +1,25 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class MostraInterval_Exercici4_13 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int n1=0, n2=0;
+		
+	
+			
+		
+		for (int interval = n1; interval <= n2 ; n1++) {
+			System.out.println("El nombres entre " +n1+ " i " +n2+ " són: ");
+		}
+		
+		sc.close();
+
+	}
+
+}

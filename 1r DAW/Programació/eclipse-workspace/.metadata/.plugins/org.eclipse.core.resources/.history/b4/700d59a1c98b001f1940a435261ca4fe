@@ -1,0 +1,22 @@
+import java.util.Scanner;
+//Un programa que calcula descomptes.
+public class Descompte {
+//Es fa un descompte del 8%.
+public static final float DESCOMPTE = 8;
+//Es fa descompte per compres d&#39;un mínim de 100 euros.
+public static final float COMPRA_MIN = 100;
+public static void main (String[] args) {
+Scanner lector = new Scanner(System.in);
+System.out.print(&quot;Quin és el preu del producte, en euros? &quot;);
+float preu = lector.nextFloat();
+lector.nextLine();
+//Estructura de selecció simple.
+//Si l&#39;expressió avalua true, executa el bloc dins l&#39;if.
+//En cas contrari, ignora&#39;l.
+if (preu &gt;= COMPRA_MIN) {
+float descompteFet = preu * DESCOMPTE / 100;
+preu = preu - descompteFet;
+}
+System.out.println(&quot;El preu final per pagar és de &quot; + preu + &quot; euros.&quot;);
+}
+}

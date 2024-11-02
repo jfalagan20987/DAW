@@ -1,0 +1,11 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+}
+
+header {
+  display: inline-block;
+  background-color: #1A3660;
+  color: white;
+}

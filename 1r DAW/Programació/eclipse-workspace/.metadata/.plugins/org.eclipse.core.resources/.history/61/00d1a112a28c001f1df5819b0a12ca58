@@ -1,0 +1,32 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int intents = 1;
+		int i = 0;
+		final int NOMBRE_SECRET = 7;
+		
+		while (intents <= 3) {
+			System.out.println("Introdueix el nombre secret (màxim 3 intents):");
+			i = sc.nextInt();
+			intents = intents + 1;
+			
+			if (i == NOMBRE_SECRET) {
+				System.out.println("CORRECTE!");
+			}else {
+				System.out.println("ERROR! Nombre incorrecte!");
+			}
+				
+		}
+		sc.close();
+
+	}
+
+}

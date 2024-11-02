@@ -1,0 +1,21 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Try {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner lector = new Scanner(System.in);
+		char lletra;
+		System.out.println("Introdueix una lletra:");
+		lletra = (char) lector.next().charAt(0);
+		
+		
+		System.out.print("La següent lletra és: ");
+		System.out.println(lletra+1);
+		
+	}
+
+}

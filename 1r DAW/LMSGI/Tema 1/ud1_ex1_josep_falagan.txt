@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Exercici HTML - Corregeix els errors">
+        <title>Corregeix els errors que trobis al document</title>
+    </head>
+	<body>
+		<h1>Aprendre HTML és molt divertit</h1>
+    
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam optio nesciunt atque iure  animi dicta velit</p>
+   
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam optio nesciunt atque iure  animi dicta velit</p>
+      
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam optio nesciunt atque iure  animi dicta velit</p>
+	</body>
+</html>

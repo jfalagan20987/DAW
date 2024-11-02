@@ -1,0 +1,25 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int mes = 0;
+		
+		do {
+			System.out.println("Introdueix un nombre de mes (1 a 12):");
+			mes = sc.nextInt();
+			
+		} while (mes >= 1 || mes <= 12);
+		System.out.println("Entrada correcte!");
+		
+		sc.close();
+
+	}
+
+}
