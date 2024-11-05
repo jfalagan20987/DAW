@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  padding: 10px;
+}
+
+body {
+  font-size: 20px;
+}
+
+header, footer {
+  background-color: aquamarine;
+  height: 100px;
+  /* font-size: 1em; */
+}
+
+/* "rem" fa referènica al navegador o al html, si ho tenim declarat */
+/* "em" fa referència a una mida mare (Ex: body) */
+
+main {
+  background-color: antiquewhite;
+  height: calc(100vH - 200px);
+}
