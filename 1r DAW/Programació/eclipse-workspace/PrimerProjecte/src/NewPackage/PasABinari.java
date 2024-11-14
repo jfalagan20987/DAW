@@ -1,0 +1,36 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class PasABinari {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int num;
+		int[] restos = new int [100];
+		int index = 0;
+		
+		System.out.println("Introdueix un número enter:");
+		num = sc.nextInt();
+		
+		while (num > 1) {
+			restos[index] = num%2;
+			index++;
+			num = num/2;
+		}
+		
+		restos[index] = num;
+		
+		System.out.println("El resultat en binari és:");
+		
+		for (int i = index ; i >=0 ; i--) {
+			System.out.print(restos[i]);
+		}
+		
+		sc.close();
+
+	}
+
+}

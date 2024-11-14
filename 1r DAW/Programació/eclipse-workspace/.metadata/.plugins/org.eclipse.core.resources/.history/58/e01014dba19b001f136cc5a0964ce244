@@ -1,0 +1,36 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_20 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int min = 1;
+		
+		System.out.println("Entra el nombre de nombres primers que vols trobar:");
+		int n = sc.nextInt();
+		
+		for (int num = min ; num <= n; num++) {
+			int numDivisors = 0;
+			for (int divisor = 1 ; divisor <= num/2 ; divisor++) {
+				if (num % divisor == 0) {
+					numDivisors+=2;
+				}
+				if (numDivisors > 2) {
+					break;
+				}
+			}
+			if (numDivisors == 2) {
+				System.out.println(num);
+			}
+		}
+		
+		sc.close();
+
+	}
+
+}

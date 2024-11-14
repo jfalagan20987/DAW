@@ -1,0 +1,31 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+//Anem a sumar un seguit de múltiples de tres.
+public class SumarMultiplesTres {
+	public static void main (String[] args) {
+		Scanner lector = new Scanner(System.in);
+		//PAS 1 i 2
+		System.out.print("Fins a quin valor vols sumar múltiples de 3?");
+		
+		int limit1 = lector.nextInt();
+		lector.nextLine();
+		int limit2 = lector.nextInt();
+		lector.nextLine();
+		int i = 0;
+		int resultat = 0;
+		//PAS 3: Anar mirant els valors un per un. Es comença pel 0.
+		if (i <= limit2) {
+			//PAS a: És múltiple de tres?
+			if ( (i%2) == 0) {
+				System.out.print(i +" + ");
+				resultat = resultat + i;
+			}
+			//PAS 3: Seguir anar mirant els valors un per un.
+			i = i + 1;
+		}
+		System.out.println(" = ");
+		System.out.println("El resultat final és " + resultat + ".");
+	}
+}

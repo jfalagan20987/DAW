@@ -10,15 +10,25 @@ public class Exercici4_17 {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Introdueix un nombre enter:");
-		int nombre = sc.nextInt();
-		int modul = nombre%2;
+		int num = sc.nextInt();
 		
-		int[] binari;
+		System.out.println("El nombre binari és: "+binari(num));
 		
-		for (int dividend = 1 ; dividend <= nombre ; dividend = dividend*2+modul) {
-			System.out.println(modul);
-		}
-		
-		}
-	
+		sc.close();
+
 	}
+	
+	public static String binari (int num) {
+		String impr = "";
+		int divisor = 2;
+		int dividend = num;
+		int modul;
+		while (dividend > 0) {
+			modul = dividend%divisor;
+			dividend = dividend/divisor;
+			impr = modul + impr;
+		}
+		return impr;
+	}
+
+}

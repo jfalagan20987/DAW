@@ -12,9 +12,8 @@ public class Exercici4_18 {
 		System.out.println("Introdueix un nombre enter:");
 		int num = sc.nextInt();
 		
-		int base = 0;
 		
-		System.out.println("El nombre "+num+" convertir a base "+base+" és: "+cadena(num));
+		System.out.println("El nombre "+num+" convertit a la base seleccionada és: "+cadena(num));
 		
 		sc.close();
 
@@ -22,7 +21,7 @@ public class Exercici4_18 {
 	
 	public static String cadena (int num) {
 		Scanner sc2 = new Scanner(System.in);
-		System.out.println("Introdueix el nombre de la base:");
+		System.out.println("Introdueix el nombre enter de la base:");
 		int base = sc2.nextInt();
 		
 		sc2.close();

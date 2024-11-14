@@ -25,3 +25,20 @@ main {
   background-color: antiquewhite;
   height: calc(100vH - 200px);
 }
+
+
+/*CENTRAT HORITZONTAL*/
+/*
+  text-align: center;
+  margin: 0 auto;
+  width:
+  display: inline-block;
+*/
+
+/*CENTRAT VERTICAL*/
+/*
+  padding: 1em 0;
+
+  display: table-cell;
+  vertical-align: middle;
+*/

@@ -1,0 +1,22 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Pruebas {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String nom = sc.nextLine();
+		
+		int edat = sc.nextInt();
+		
+		System.out.println(nom);
+		
+		sc.close();
+
+	}
+
+}

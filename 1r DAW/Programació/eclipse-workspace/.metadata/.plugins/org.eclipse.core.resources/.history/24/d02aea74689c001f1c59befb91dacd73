@@ -1,0 +1,54 @@
+0package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_21 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int b500=0, b200=0, b100=0, b50=0, b20=0, b10=0, b5=0;
+		int euros=0;
+	do {	
+		
+		System.out.println("Introdueix una quantitat d'euros múltiple de 5:");
+		euros = sc.nextInt();
+	}while (euros%5 > 1);	
+		while (euros >= 500) {
+			b500 = euros/500;
+			euros = euros - (b500*500);
+		} while (euros >= 200) {
+			b200 = euros/200;
+			euros = euros - (b200*200);
+		} while (euros >= 100) {
+			b100 = euros/100;
+			euros = euros - (b100*100);
+		} while (euros >= 50) {
+			b50 = euros/50;
+			euros = euros - (b50*50);
+		} while (euros >= 20) {
+			b20 = euros/20;
+			euros = euros - (b20*20);
+		} while (euros >= 10) {
+			b10 = euros/10;
+			euros = euros - (b10*10);
+		} while (euros >= 5) {
+			b5 = euros/5;
+			euros = euros - (b5+5);
+		}
+		
+		System.out.println("Tindràs el següents billets:");
+		System.out.println(b500+" billets de 500€.");
+		System.out.println(b200+" billets de 200€.");
+		System.out.println(b100+" billets de 100€.");
+		System.out.println(b50+" billets de 50€.");
+		System.out.println(b20+" billets de 20€.");
+		System.out.println(b10+" billets de 10€.");
+		System.out.println(b5+" billets de 5€.");
+		
+		sc.close();
+
+	}
+
+}

@@ -1,0 +1,31 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_23 {
+	
+	private static int[] llistaPrimers = null;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		llegirMida();
+		comprovarPrimers();
+
+	}
+	
+	public static void llegirMida() {
+		Scanner sc = new Scanner(System.in);
+		int numPrimers = 0;
+		System.out.println("Introdueix la quantitat de nombres primers que vols trobar:");
+		numPrimers = sc.nextInt();
+		llistaPrimers = new int[numPrimers];
+	}
+	
+	public static void comprovarPrimers() {
+		int num = 1;
+		boolean primer = true;
+		int index = 0;
+		}
+
+}

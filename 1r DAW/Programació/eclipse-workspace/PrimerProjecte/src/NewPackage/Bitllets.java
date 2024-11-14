@@ -1,0 +1,33 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Bitllets {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int[] bitllets = {500, 200, 100, 50, 20, 10, 5};
+		
+		int index = 0;
+		
+		int quantitat = 0;
+		int bitlletActual;
+		
+		System.out.println("Introdueix la quantitat d'euros:");
+		quantitat = sc.nextInt();
+		
+		while (quantitat > 0) {
+			bitlletActual = quantitat / bitllets[index];
+			quantitat = quantitat % bitllets[index];
+			System.out.println(bitlletActual + " bitllets de " + bitllets[index] + " euros.");
+			index++;
+		}
+		
+		sc.close();
+
+	}
+
+}

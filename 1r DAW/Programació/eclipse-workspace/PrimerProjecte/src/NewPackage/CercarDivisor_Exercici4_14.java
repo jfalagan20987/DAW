@@ -8,21 +8,23 @@ public class CercarDivisor_Exercici4_14 {
 		// TODO Auto-generated method stub
 		
 		Scanner sc = new Scanner(System.in);
-		int i = 0;
-		int divisor = 0;
-		do {
-			System.out.println("Introdueix un nombre més gran que 1:");
-			i = sc.nextInt();
-		} while (i <= 1);
-			System.out.println("Dada correcte!");
+		System.out.println("Introdueix un nombre més gran que 1:");
+		int i = sc.nextInt();
+		
+		boolean trobat = false;
 		
 		
-		for (divisor = i-1 ; divisor > 1 ; divisor--) {
-			int modul = i%divisor;
-			if (modul == 0) {
-				System.out.println("El divisor és: " +divisor);
+		for (int divisor = i-1 ; divisor > 1 ; divisor--) {
+			if (i%divisor == 0)
+				System.out.println("El divisor més gran és: " +divisor);
+				trobat = true;
 				break;
 			}
+		
+		if (trobat == false) {
+			System.out.println("El número " + i + " és primo");
 		}
-			}
+	
 	}
+	
+}
