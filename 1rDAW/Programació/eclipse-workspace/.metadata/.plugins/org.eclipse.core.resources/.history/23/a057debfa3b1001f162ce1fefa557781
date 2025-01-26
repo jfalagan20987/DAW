@@ -1,0 +1,14 @@
+package Data;
+
+public class DemaResolt {
+
+	public static void main(String[] args) {
+		
+		DataResolt d1 = new DataResolt(32,12,2024);
+		d1.mostrarData();
+		
+		d1.dema();
+
+	}
+
+}

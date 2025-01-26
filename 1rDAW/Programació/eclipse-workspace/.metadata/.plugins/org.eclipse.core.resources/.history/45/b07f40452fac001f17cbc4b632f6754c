@@ -1,0 +1,32 @@
+package ExercicisT6;
+
+public class CompteBancariResolt {
+	
+	private String dniTitular;
+	private String nomTitular;
+	private double saldo;
+	
+	//Constructors
+	public CompteBancariResolt(String dniTitular, String nomTitular, double saldo) {
+		this.dniTitular = dniTitular;
+		this.nomTitular = nomTitular;
+		this.saldo = saldo;
+	}
+	
+	//Mètodes
+	public void ingressar (double quantitat) {
+		saldo = saldo + quantitat;
+	}
+	
+	public void reintegrar (double quantitat) {
+		saldo = saldo - quantitat;
+	}
+	
+	public void mostrarDades() {
+		System.out.println("Informació del compte");
+		System.out.println("DNI titular = " + dniTitular);
+		System.out.println("Nom titular = " + nomTitular);
+		System.out.println("Saldo = " + saldo);
+	}
+
+}

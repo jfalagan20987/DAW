@@ -1,0 +1,99 @@
+package Persona;
+
+import java.util.Scanner;
+
+public class Institut {
+	
+	static Persona[] persones = new Persona[100];
+	static int index;
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		int opcio = 0;
+		
+		do {
+			System.out.println("---MENÚ---");
+			System.out.println("1. Nou alumne");
+			System.out.println("2. Nou professor");
+			System.out.println("3. Mostrar dades");
+			System.out.println("4. Sortir del programa");
+			System.out.println("Tria una opció (1-4):");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcio) {
+			case 1:
+				nouAlumne();
+				break;
+			
+			case 2:
+				nouProfessor();
+				break;
+				
+			case 3:
+				for (int i = 0 ; i < index ; i++) {
+					persones[i].mostrarDades();
+				}
+				break;
+			
+			case 4:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("Opció no vàlida!");
+			}
+			
+		}while (opcio!=4);
+		
+	}
+	
+	public static void nouAlumne() {
+		
+		String nom;
+		String dni;
+		int edat;
+		String nivell;
+		
+		System.out.println("Introdueix el nom del alumne:");
+		nom = sc.nextLine();
+		
+		System.out.println("Introdueix el DNI:");
+		dni = sc.nextLine();
+		
+		System.out.println("Introdueix l'edat:");
+		edat = sc.nextInt();
+		
+		System.out.println("Quin nivell d'estudis està cursant?");
+		nivell = sc.nextLine();
+		
+		persones[index] = new Alumne(nom, dni, edat, nivell);
+		index++;
+	}
+	
+	public static void nouProfessor() {
+		
+		String nom;
+		String dni;
+		int edat;
+		String assignatura;
+		
+		System.out.println("Introdueix el nom del professor:");
+		nom = sc.nextLine();
+		
+		System.out.println("Introdueix el DNI:");
+		dni = sc.nextLine();
+		
+		System.out.println("Introdueix l'edat:");
+		edat = sc.nextInt();
+		
+		System.out.println("Quina assignatura està impartint?");
+		assignatura = sc.nextLine();
+		
+		persones[index] = new Profesor(nom, dni, edat, assignatura);
+		index++;
+	}
+
+}

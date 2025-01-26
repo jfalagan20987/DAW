@@ -1,0 +1,26 @@
+package ExercicisT6;
+
+public class CompteBancari {
+	
+	//Variables
+	private String dniTitular;
+	private String nomTitular;
+	private double saldo;
+	
+	//Setters o Getters
+	public void setDniTitular (String dniTitular) {
+		this.dniTitular = dniTitular;
+	}
+	
+	public void setNomTitular (String nomTitular) {
+		this.nomTitular = nomTitular;
+	}
+	
+	public void setSaldo (double saldo) {
+		this.saldo = saldo;
+	}
+	
+	//Mètodes
+	
+
+}

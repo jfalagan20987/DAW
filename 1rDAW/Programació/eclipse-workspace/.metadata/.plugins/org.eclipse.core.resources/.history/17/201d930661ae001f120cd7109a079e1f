@@ -1,0 +1,14 @@
+package Instituto;
+
+public class GestioInstitut {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Alumnes a1 = new Alumne("4440000M","Joan", "1rDAW");
+		Profesor p1 = new Profesor ("4150000K","Miquel", "Programació");
+		
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package AceptaElReto;
+
+public class Nochevieja {
+
+	public static void main(String[] args) {
+		
+		int hora, minuts;
+
+	}
+
+}

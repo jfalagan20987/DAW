@@ -1,0 +1,11 @@
+package Data;
+
+public class DemaResolt {
+
+	public static void main(String[] args) {
+		
+		DataResolt d1 = new DataResolt(29,2,2024);
+
+	}
+
+}

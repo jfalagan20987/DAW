@@ -1,0 +1,62 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_25 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String num;
+	static int max = 0;
+	static int min = 0;
+	static int posMax = 0;
+	static int posMin = 0;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		introduirNum();
+		cercarMaxim();
+		cercarMinim();
+		
+		System.out.println("El dígit més gran del nombre "+num+" és: "+(char)max+" i es troba a la posició: "+posMax);
+		System.out.println("Y el dígit més petit és: "+(char)min+" i es troba a la posició: "+posMin);
+
+	}
+	
+	public static void introduirNum() {
+		System.out.println("Entra un nombre enter de màxim 15 xifres:");
+		num = sc.nextLine();
+	}
+	
+	public static int cercarMaxim() {
+		
+		max = num.charAt(0);
+		posMax = 0;
+		
+		for (int i = 0 ; i < num.length() ; i++) {
+			if (max <= num.charAt(i)) {
+				max = num.charAt(i);
+				
+				posMax = i+1;
+			}
+			
+		}
+		return max;
+	}
+	
+	public static int cercarMinim() {
+		
+		min = num.charAt(0);
+		posMin = 0;
+		
+		for (int i = 0 ; i < num.length(); i++) {
+			if (min >= num.charAt(i)) {
+				min = num.charAt(i);
+				
+				posMin = i+1;
+			}
+		}
+		return min
+	}
+	
+}

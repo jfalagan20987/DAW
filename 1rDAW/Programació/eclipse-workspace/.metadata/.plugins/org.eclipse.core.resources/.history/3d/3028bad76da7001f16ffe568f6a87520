@@ -1,0 +1,14 @@
+package PackageT5;
+
+public class Persona {
+	
+	private String nom;
+	private int edat;
+	
+	public void caminar() {
+		System.out.println(nom+" està caminant.");
+	}
+	
+	
+
+}

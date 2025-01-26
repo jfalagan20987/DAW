@@ -1,0 +1,36 @@
+package AceptaElReto;
+
+public class Acuarios {
+	
+	static java.util.Scanner in;
+
+    public static void casoDePrueba() {
+      
+        // TU CÓDIGO AQUÍ
+    	int numCompartimentos, capacidadMayor, difLitros;
+    	int litrosTotales = 0;
+    	
+    	numCompartimentos = in.nextInt();
+    	capacidadMayor = in.nextInt();
+    	difLitros = in.nextInt();
+ 
+    	
+    	for (int i = numCompartimentos ; i > 0 ; i--) {
+    		litrosTotales += capacidadMayor;
+    		capacidadMayor -= difLitros;
+    	}
+    	
+    	System.out.println(litrosTotales);
+    	in.nextLine();
+
+    } // casoDePrueba
+
+    public static void main(String[] args) {
+
+        in = new java.util.Scanner(System.in);
+
+        int numCasos = in.nextInt();
+        for (int i = 0; i < numCasos; i++)
+            casoDePrueba();
+    } // main
+} // class solution

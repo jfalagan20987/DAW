@@ -1,0 +1,59 @@
+package AceptaElReto;
+
+import java.util.Scanner;
+
+public class ChicleRegalo {
+
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		
+		int numEnvoltorios;
+    	int numChicles;
+    	int chiclesComprados;
+    	
+    	int chiclesTotales;
+    	int envoltoriosFinales;
+    	
+    	do {
+    		numEnvoltorios = in.nextInt();
+        	numChicles = in.nextInt();
+        	chiclesComprados = in.nextInt();
+        	in.nextLine();
+        	
+        	if (numEnvoltorios == 0 && numChicles == 0 && chiclesComprados == 0) {
+            	System.exit(0);
+        	}
+        	
+        	if (numEnvoltorios == 0) {
+        		chiclesTotales = chiclesComprados;
+        		envoltoriosFinales = chiclesComprados;
+        		System.out.println(chiclesTotales +" "+envoltoriosFinales);
+        		in.nextLine();
+        	}
+        	
+        	else if (chiclesComprados > ((chiclesComprados/numEnvoltorios)*numChicles) && chiclesComprados > numEnvoltorios) {
+        		chiclesTotales = (chiclesComprados / numEnvoltorios) + chiclesComprados;
+        		chiclesTotales += numChicles;
+        		envoltoriosFinales = chiclesTotales / chiclesComprados;
+        		System.out.println(chiclesTotales +" "+envoltoriosFinales);
+        		in.nextLine();
+        	}
+        	
+        	else if (chiclesComprados == numEnvoltorios) {
+        		chiclesTotales = (chiclesComprados / numEnvoltorios) + chiclesComprados;
+        		envoltoriosFinales = chiclesTotales / chiclesComprados;
+        		System.out.println(chiclesTotales +" "+envoltoriosFinales);
+        		in.nextLine();
+        	}
+        	else if (chiclesComprados <= ((chiclesComprados/numEnvoltorios)*numChicles)){
+        		System.out.println("RUINA");
+        		in.nextLine();
+        	}
+    	}while (numEnvoltorios > 0 || numChicles > 0 || chiclesComprados > 0);
+    		
+    	
+    	}
+}
+
+

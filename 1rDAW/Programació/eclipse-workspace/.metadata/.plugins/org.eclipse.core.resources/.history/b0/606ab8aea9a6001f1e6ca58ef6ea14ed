@@ -1,0 +1,71 @@
+package ExamenPackage;
+
+import java.util.Scanner;
+
+public class ExamenT4 {
+	
+	static double[] notas = new double[100];
+	static double nota = 0;
+	static int index = 0;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int opcio = 0;
+		boolean no_sortir = true;
+		
+		while (no_sortir) {
+			do {
+				System.out.println("Menú:");
+				System.out.println("1. Añadir notas de alumnos.");
+				System.out.println("2. Mostrar todas las notas introducidas.");
+				System.out.println("3. Calcular estadísticas (nota media, nota máxima y nota mínima).");
+				System.out.println("4. Salir del programa.");
+				System.out.println("Selecciona una opción (1-4):");
+				
+				if (sc.hasNextInt()==true) {
+					opcio = sc.nextInt();
+					sc.nextLine();
+				}else {
+					System.out.println("¡Valor incorrecto!");
+					sc.nextLine();
+				}
+			}while(opcio == 0);
+			
+			switch (opcio) {
+			
+			case 1 :
+				anadirNota();
+				break;
+			
+		
+			
+			default :
+				System.out.println("Opción incorrecta.");
+			}
+		}
+		
+		sc.close();
+
+	}
+	
+	
+	public static void anadirNota() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println("Introduce la nota del examen:");
+			nota = sc.nextDouble();
+		}while (nota < 0 || nota > 10);
+		
+		notas[index] = nota;
+		index++;
+		
+		System.out.println(notas);
+		
+		sc.close();
+	}
+	
+}

@@ -1,0 +1,13 @@
+package EjerciciosOO;
+
+public class Alumne {
+	private String nivell;
+
+	public Alumne(String nivell) {
+		super(dni, nom, edat);
+		this.nivell = nivell;
+	}
+	
+	
+
+}

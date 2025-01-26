@@ -1,0 +1,12 @@
+package Equip;
+
+public class Jugador extends Membre{
+	
+	private double altura;
+	
+	public Jugador(String nom, double salari, int edat, double altura) {
+		super(nom, salari, edat);
+		this.altura = altura;
+	}
+
+}

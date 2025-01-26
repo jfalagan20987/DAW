@@ -1,0 +1,40 @@
+package ExercicisT6;
+
+import java.util.Scanner;
+
+public class CompteBancari {
+	
+	//Variables
+	private String dniTitular;
+	private String nomTitular;
+	private double saldo;
+	
+	//Setters o Getters
+	public void setDniTitular (String dniTitular) {
+		this.dniTitular = dniTitular;
+	}
+	
+	public void setNomTitular (String nomTitular) {
+		this.nomTitular = nomTitular;
+	}
+	
+	public void setSaldo (double saldo) {
+		this.saldo = saldo;
+	}
+	
+	//Mètodes
+	public void ingressarDiners() {
+		
+		Scanner sc = new Scanner(System.in);
+	}
+	
+	public void retirarDiners() {
+		
+		Scanner sc = new Scanner(System.in);
+	}
+	
+	public void mostrarSaldo() {
+		System.out.println(saldo);
+	}
+
+}

@@ -1,0 +1,28 @@
+package PackageT5;
+
+public class GestioPersones {
+
+	public static void main(String[] args) {
+		
+		Persona p1 = new Persona();
+		Persona p2 = new Persona("Josep", 30);
+		Persona p3 =  new Persona("Joan");
+		
+		//p1.nom = "Josep";
+		//p1.edat = 30;
+		
+		p1.imprimirDades();
+		p1.caminar();
+		
+		p2.imprimirDades();
+		p2.caminar();
+		
+		p3.imprimirDades();
+		p3.caminar();
+		
+		p3.setEdat(30);
+		
+		p3.imprimirDades();
+	}
+
+}

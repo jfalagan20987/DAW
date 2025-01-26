@@ -1,0 +1,12 @@
+package AceptaElReto;
+
+public class ChicleRegalo {
+	
+	static java.util.Scanner in;
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

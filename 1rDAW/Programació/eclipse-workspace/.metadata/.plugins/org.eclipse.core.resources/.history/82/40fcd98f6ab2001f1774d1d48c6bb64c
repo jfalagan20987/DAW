@@ -1,0 +1,18 @@
+package Persona;
+
+public class Institut {
+	
+	static Persona[] persones = new Persona[100];
+	static int index;
+
+	public static void main(String[] args) {
+		
+		do {
+			System.out.println("---MENÚ---");
+			System.out.println("1. Nou alumne");
+			System.out.println("2. Nou professor");
+			System.out.println();
+		}
+	}
+
+}

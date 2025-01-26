@@ -1,0 +1,18 @@
+package Instituto;
+
+public class Alumne extends Persona{
+	
+	private String nivell;
+	
+	public Alumne (String dni, String nom, String nivell)  {
+		super (dni, nom);
+		this.nivell = nivell;
+		
+	}
+	
+	public void mostrarDades() {
+		super.mostrarDades();
+		System.out.println("Nivell: "+nivell);
+	}
+
+}

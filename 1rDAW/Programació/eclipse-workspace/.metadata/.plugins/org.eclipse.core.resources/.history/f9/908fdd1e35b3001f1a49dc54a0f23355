@@ -1,0 +1,7 @@
+package Equip;
+
+public class Jugador extends Membre{
+	
+	private double altura
+
+}

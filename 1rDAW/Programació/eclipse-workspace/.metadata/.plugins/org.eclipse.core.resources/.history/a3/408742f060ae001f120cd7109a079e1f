@@ -1,0 +1,10 @@
+package Instituto;
+
+public class GestioInstitut {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

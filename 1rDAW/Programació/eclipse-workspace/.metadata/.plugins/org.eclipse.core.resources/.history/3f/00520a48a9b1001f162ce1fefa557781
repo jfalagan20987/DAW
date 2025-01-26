@@ -1,0 +1,7 @@
+package Persona;
+
+public class Alumne extends Persona{
+	
+	private String nivell;
+
+}

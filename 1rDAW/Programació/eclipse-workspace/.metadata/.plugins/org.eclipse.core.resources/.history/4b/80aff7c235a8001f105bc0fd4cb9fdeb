@@ -1,0 +1,20 @@
+package ExercicisT6;
+
+public class Persona {
+	
+	private String dni;
+	private String nom;
+	private short edat;
+	
+	public void setDni (String dni) {
+		this.dni = dni;
+	}
+	
+	public void setNom (String nom) {
+		this.nom = nom;
+	}
+	
+	public void setEdat (short edat) {
+		this.edat = edat;
+	}
+}

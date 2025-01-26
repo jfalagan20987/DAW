@@ -1,0 +1,7 @@
+package Instituto;
+
+public class Persona {
+	private String dni;
+	private String nom;
+
+}

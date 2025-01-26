@@ -1,0 +1,82 @@
+CREATE TABLE cars (
+    car_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    model VARCHAR(100),
+    brand VARCHAR(100),
+    color VARCHAR(100),
+    plate VARCHAR(100),
+    seats INT,
+    doors INT,
+    fuel VARCHAR(100),
+    location VARCHAR(100),
+    itv VARCHAR(100),
+	state VARCHAR(100),
+    price_per_day INT
+);
+
+INSERT INTO cars (model, brand, color, plate, seats, doors, fuel, location, itv, state, price_per_day)
+VALUES ('Auris', 'Toyota', 'blue', '3412LJM', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 80),
+('Corsa', 'Opel', 'red', '4131LBN', 5, 5, 'Gasoline', 'Airport', 'Yes', 'Good', 75),
+('Panda', 'Fiat', 'blue', '8021HRZ', 5, 5, 'Gasoline', 'Airport', 'Yes', 'Good', 75),
+('Cupra', 'Nissan', 'white', '5621JDR', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 85),
+('Auris', 'Toyota', 'black', '8921TYN', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 80),
+('Cupra', 'Nissan', 'grey', '5872RTX', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 85),
+('A3 Sportback', 'Audi', 'black', '8931DRS', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 90),
+('Q3', 'Audi', 'beige', '4783TVC', 5, 5, 'Diesel', 'Airport', 'Yes', 'Good', 90),
+('Serie 4 Cabrio', 'BMW', 'blue', '7725LKS', 4, 3, 'Diesel', 'Aiport', 'Yes', 'Good', 110),
+('Vito', 'Mercedes', 'white', '4789GTX', 9, 5, 'Diesel', 'Airport', 'Yes', 'Good', 100);
+
+
+
+CREATE TABLE customers (
+	customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	forename VARCHAR(100),
+	surname VARCHAR(100),
+	nif VARCHAR(100),
+	driver_license VARCHAR(100),
+	address VARCHAR(100),
+	email VARCHAR(100),
+	phone VARCHAR(100)
+);
+
+INSERT INTO customers (forename, surname, nif, driver_license, address, email, phone)
+VALUES ('Jon', 'Eidson', '21212458F', '35271113', 'Paseo Moreras, 15', 'jon@gmail.com', '+34 613121415'),
+('John', 'Smith', '31321131G', '41342211', 'Carrer Forn, 12', 'john@gmail.com', '+34 611215162'),
+('Alex', 'Caruso', '42365432D', '84563274', 'Address, 1', 'acaruso@gmail.com', '+34 658744496'),
+('Isaiah', 'Hartenstein', '84475662G', '99651147', 'Address, 2', 'ihart@gmail.com', '+34 632147856'),
+('Chet', 'Holmgren', '87432243T', '33417776', 'Address, 3', 'chet@gmail.com', '+34 687221158'),
+('Aaron', 'Wiggins', '41515648B', '44117655', 'Tulsa St, 5', 'awiggs@gmail.com', '+34 611859754'),
+('Isaiah', 'Joe', '51248869X', '31119655', 'Brick Town, 17', 'izai@gmail.com', '+34 655200788'),
+('Shai', 'Gilgeous-Alexander', '55217748S', '51189005', 'Aura Street, 2', 'sga@gmail.com', '+34 699578410'),
+('Luguentz', 'Dort', '55289677L', '31145789', 'Lockdown Avenue, 4', 'lubeast@gmail.com', '+34 611098862'),
+('Jalen', 'Williams', '41213377W', '93311578', 'New Address, 34', 'jdub@gmail.com', '+34 601227399');
+
+
+
+CREATE TABLE reservations (
+	reservation_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	customer_id INT NOT NULL,
+	car_id INT NOT NULL,
+	date_in DATE,
+	date_out DATE,
+	price_per_day INT,
+	FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+	FOREIGN KEY (car_id) REFERENCES cars(car_id)
+);
+
+INSERT INTO reservations (customer_id, car_id, date_in, date_out, price_per_day)
+VALUES (1, 1, '2024-10-01', '2024-10-07', 80),
+(1, 1, '2024-11-05', '2024-11-15', 80),
+(1, 1, '2024-12-23', '2024-12-28', 100),
+(2, 2, '2024-11-01', '2024-11-10', 75),
+(3, 4, '2024-10-07', '2024-10-14', 85),
+(4, 2, '2024-10-12', '2024-10-15', 75),
+(2, 4, '2024-12-21', '2024-12-26', 105),
+(3, 1, '2024-12-30', '2025-01-07', 100),
+(4, 5, '2025-01-08', '2025-01-15', 80),
+(1, 6, '2025-04-03', '2025-04-16', 85),
+(8, 7, '2024-10-21', '2024-10-29', 90),
+(10, 8, '2024-10-17', '2024-10-24', 90),
+(6, 10, '2024-11-01', '2024-11-12', 100),
+(5, 9, '2024-11-15', '2024-11-17', 110),
+(7, 3, '2024-12-21', '2025-01-12', 90),
+(9, 10, '2025-03-01', '2025-03-09', 100);

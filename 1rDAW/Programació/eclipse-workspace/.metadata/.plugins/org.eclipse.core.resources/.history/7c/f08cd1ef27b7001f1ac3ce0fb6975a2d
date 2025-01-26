@@ -1,0 +1,44 @@
+package AceptaElReto;
+
+public class ChiclesRegalo {
+
+	static java.util.Scanner in;
+
+    public static void casoDePrueba() {
+      
+        // TU CÓDIGO AQUÍ
+    	int numEnvoltorios;
+    	int numChicles;
+    	int chiclesComprados;
+    	
+    	int chiclesTotales;
+    	int envoltoriosFinales;
+    	
+    	numEnvoltorios = in.nextInt();
+    	numChicles = in.nextInt();
+    	chiclesComprados = in.nextInt();
+    	
+    	if (numEnvoltorios == 0 && numChicles == 0 && chiclesComprados == 0) {
+    		System.out.println("RUINA");
+    	}else {
+    		chiclesTotales = (chiclesComprados / numEnvoltorios) + chiclesComprados;
+        	if (chiclesComprados != numEnvoltorios) {
+        		chiclesTotales += numChicles;
+        	}
+        	envoltoriosFinales = chiclesTotales / chiclesComprados;
+        	
+        	System.out.println(chiclesTotales +" "+envoltoriosFinales);
+    	}
+    	
+
+    } // casoDePrueba
+
+    public static void main(String[] args) {
+
+        in = new java.util.Scanner(System.in);
+
+        int numCasos = in.nextInt();
+        for (int i = 0; i < numCasos; i++)
+            casoDePrueba();
+    } // main
+} // class solution

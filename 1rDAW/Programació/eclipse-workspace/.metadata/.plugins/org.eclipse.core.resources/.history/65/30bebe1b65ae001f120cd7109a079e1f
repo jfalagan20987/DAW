@@ -1,0 +1,12 @@
+package EjerciciosOO;
+
+public class GestioInstitut {
+	
+	static Persona [] persones = new Persona
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

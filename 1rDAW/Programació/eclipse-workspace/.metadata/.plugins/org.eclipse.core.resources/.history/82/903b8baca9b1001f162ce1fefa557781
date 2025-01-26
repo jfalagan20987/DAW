@@ -1,0 +1,7 @@
+package Persona;
+
+public class Profesor extends Persona{
+	
+	private String assignatura;
+
+}

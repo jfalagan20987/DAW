@@ -1,0 +1,76 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class ExamenT4_2023 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String usuari[] = new String[100];
+	static String contrasenya[] = new String[100];
+	static String iniciUsuari[] = new String[100];
+	static String iniciContrasenya[] = new String[100];
+	static int intents = 0;
+	boolean comprovar = true;
+	static int opcio = 0;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("---MENU---");
+		System.out.println("1. Introduir nou usuari i contrasenya");
+		System.out.println("2. Entrar al sistema");
+		System.out.println("3. Sortit del programa");
+		System.out.println("Tria una opció (1-3):");
+		opcio = sc.nextInt();
+		
+		switch (opcio) {
+		case 1 :
+			registreUsuari();
+			
+		case 2 :
+			entradaSistema();
+			
+		case  3 :
+			llistaUsuaris();
+		}
+		
+		
+	}
+	
+	public static void registreUsuari() {
+		
+		System.out.println("Registra el teu nom d'usuari i contrasenya:");
+		for (int i = 0 ; i < usuari.length ; i++) {
+			usuari[i] = sc.nextLine();
+			break;
+		}
+		
+		System.out.println("Registra la teva contrasenya:");
+		for (int j = 0 ; j < contrasenya.length ; j++) {
+			contrasenya[j] = sc.nextLine();
+			break;
+		}
+	}
+	
+	public static void entradaSistema() {
+		
+		System.out.println("Introdueix el teu nom d'usuari:");
+		for (int i = 0 ; i < iniciUsuari.length ; i++) {
+			iniciUsuari[i] = sc.nextLine();
+			break;
+		}
+		
+		System.out.println("Introdueix la teva contrasenya:");
+		for (int j = 0 ; j < iniciContrasenya.length ; j++) {
+			iniciContrasenya[j] = sc.nextLine();
+			break;
+		}
+		
+	}
+	
+	public static void llistaUsuaris() {
+		System.out.println(usuari);
+		System.out.println(contrasenya);
+	}
+
+}

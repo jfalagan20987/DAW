@@ -1,0 +1,21 @@
+package Equip;
+
+public class Membre {
+	
+	private String nom;
+	private double salari;
+	private int edat;
+	
+	public Membre (String nom, double salari, int edat) {
+		this.nom = nom;
+		this.salari = salari;
+		this.edat = edat;
+	}
+	
+	public void mostrarDades() {
+		System.out.println("Nom: "+nom);
+		System.out.println("Salari: "+salari+ "M d'euros");
+		System.out.println("Edat: "+edat+" anys");
+	}
+
+}

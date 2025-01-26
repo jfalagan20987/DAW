@@ -1,0 +1,73 @@
+package Data;
+
+public class DataResolt {
+	
+	private int dia;
+	private int mes;
+	private int any;
+	
+	int[] diesMes = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	public DataResolt(int dia, int mes, int any) {
+		super();
+		this.dia = dia;
+		this.mes = mes;
+		this.any = any;
+		
+		if (!validarData()) {
+			this.dia = 0;
+			this.mes = 0;
+			this.any = 0;
+			System.out.println("Data no vàlida!");
+		}
+	}
+	
+	private boolean validarData() {
+		
+		if (anyBisiesto(any)) {
+			diesMes[1] = 29;
+		}
+		
+		if (mes < 1 || mes > 12) {
+			return false;
+		}
+		
+		if (dia < 1) {
+			return false;
+		}
+		
+		if (dia > diesMes[mes-1]) {
+			return false;
+		}
+		
+		return true;
+	}
+
+	private boolean anyBisiesto(int any) {
+		
+		if ((any%4 == 0 && any%100 != 0) || (any%400 == 0)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void dema() {
+		if (anyBisiesto(any)) {
+			diesMes[1] = 29;
+		}
+		
+		dia++;
+		
+		if (dia > diesMes[mes-1]) {
+			dia = 1;
+			mes++;
+			if (mes > 12) {
+				mes = 1;
+				any++;
+			}
+		}
+		
+	}
+
+}

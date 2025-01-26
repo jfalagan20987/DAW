@@ -1,0 +1,9 @@
+package EjerciciosOO;
+
+public class Persona {
+	private String nom;
+	private String dni;
+	private String edat;
+	
+
+}

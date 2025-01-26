@@ -1,0 +1,16 @@
+package ExercicisT6;
+
+public class CompteBancariResolt {
+	
+	private String dniTitular;
+	private String nomTitular;
+	private double saldo;
+	
+	//Constructors
+	public CompteBancariResolt(String dniTitular, String nomTitular, double saldo) {
+		this.dniTitular = dniTitular;
+		this.nomTitular = nomTitular;
+		this.saldo = saldo;
+	}
+
+}

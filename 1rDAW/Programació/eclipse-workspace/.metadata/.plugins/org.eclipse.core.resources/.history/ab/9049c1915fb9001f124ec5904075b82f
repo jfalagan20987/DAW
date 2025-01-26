@@ -1,0 +1,62 @@
+package AceptaElReto;
+
+import java.util.Scanner;
+
+public class noCumple {
+
+	public static void main(String[] args) {
+		
+	Scanner sc = new Scanner(System.in);
+
+	int diaNaix, mesNaix, anyNaix, diaActual, mesActual, anyActual;
+	int[] mesos = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	
+	int noCumple = 0;
+	
+	do {
+		diaNaix = sc.nextInt();
+		mesNaix = sc.nextInt();
+		anyNaix = sc.nextInt();
+		diaActual = sc.nextInt();
+		mesActual = sc.nextInt();
+		anyActual = sc.nextInt();
+		
+		if (diaNaix == 0 && mesNaix == 0 && anyNaix == 0 && diaActual == 0 && mesActual == 0 && anyActual == 0) {
+			System.exit(0);
+		}
+		
+		if (diaNaix == diaActual && mesNaix == mesActual) {
+			noCumple = 0;
+			System.out.println(noCumple);
+		}
+		
+		else if ((mesNaix < mesActual)) {
+			noCumple = ((anyActual - anyNaix) * 364) + (mesos[mesNaix-1] - diaNaix) + diaActual;
+			for (int i = mesNaix ; i < mesActual-1 ; i++) {
+				noCumple += mesos[i];
+			}
+			System.out.println(noCumple);
+		}
+		
+		else if (mesNaix >= mesActual) {
+			noCumple = ((anyActual - anyNaix - 1)*364) + (mesos[mesNaix-1] - diaNaix) + diaActual;
+			for (int i = mesNaix ; i < 12 ; i++) {
+				noCumple += mesos[i];
+			}
+			for (int j = 0 ; j < mesActual-1 ; j++) {
+				noCumple += mesos[j];
+			}
+			System.out.println(noCumple);
+		
+		}
+		
+		else if (mesNaix == mesActual && diaNaix < diaActual) {
+			noCumple = ((anyActual - anyNaix) * 364) + (diaActual - diaNaix) - 1;
+			System.out.println(noCumple);
+		}
+		
+	}while (diaNaix != 0 && mesNaix != 0 && anyNaix != 0 && diaActual != 0 && mesActual != 0 && anyActual != 0);
+
+	}
+
+}

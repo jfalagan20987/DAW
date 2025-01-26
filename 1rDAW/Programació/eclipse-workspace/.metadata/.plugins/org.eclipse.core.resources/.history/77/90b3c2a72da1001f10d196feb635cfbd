@@ -1,0 +1,36 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_25 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String num;
+	static int max = 0;
+	static int min = 0;
+	static int posMax = 0;
+	static int posMin = 0;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Entra un nombre enter de màxim 15 xifres:");
+		num = sc.nextLine();
+		
+		System.out.println(max+", "+posMax);
+
+	}
+	
+	public static void cercarMaxim(String num) {
+		max = num.charAt(0);
+	
+		for (int i = 1 ; i < num.length() ; i++) {
+			if (num.charAt(i) >= max) {
+				max = num.charAt(i);
+			}
+			
+			posMax = i+1;
+		}
+	}
+	
+}

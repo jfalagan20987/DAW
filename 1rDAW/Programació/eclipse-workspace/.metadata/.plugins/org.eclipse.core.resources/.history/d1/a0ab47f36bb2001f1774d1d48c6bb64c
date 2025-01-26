@@ -1,0 +1,72 @@
+package Persona;
+
+import java.util.Scanner;
+
+public class Institut {
+	
+	static Persona[] persones = new Persona[100];
+	static int index;
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		int opcio = 0;
+		
+		do {
+			System.out.println("---MENÚ---");
+			System.out.println("1. Nou alumne");
+			System.out.println("2. Nou professor");
+			System.out.println("3. Mostrar dades alumnes");
+			System.out.println("4. Mostrar dades professors");
+			System.out.println("5. Sortir del programa");
+			System.out.println("Tria una opció (1-5):");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcio) {
+			case 1:
+				nouAlumne();
+				break;
+			
+			case 2:
+				nouProfessor();
+				break;
+				
+			case 3:
+				mostrarAlumnes();
+				
+			case 4:
+				mostrarProfessors();
+			
+			case 5:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("Opció no vàlida!");
+			}
+			
+		}while (opcio!=5);
+		
+	}
+	
+	public static void nouAlumne() {
+		
+		Alumne nou_alumne = new Alumne(sc.next(), sc.next(), sc.nextInt(), sc.next());
+		
+		persones[index] = nou_alumne;
+		index++;
+	}
+	
+	public static void nouProfessor() {
+		
+		Profesor nou_professor = new Profesor(sc.next(), sc.next(), sc.nextInt(), sc.next());
+		
+		persones[index] = nou_professor;
+		index++;
+	}
+	
+	
+
+}

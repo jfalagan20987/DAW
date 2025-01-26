@@ -1,0 +1,99 @@
+:root {
+  --white: #f7f7f7;
+  --black: #333;
+  --grey: #575757;
+  --light-grey: #ebebeb;
+  --turquesa: #549F93;
+  --opacity_turquesa: #549f9322;
+}
+
+@font-face {
+  font-family: Comfortaa;
+  src: url(./assets/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Comfortaa;
+  text-decoration: none;
+  text-align: center;
+}
+
+header, footer {
+  width: 100%;
+  background-color: var(--turquesa);
+  color: var(--white);
+}
+
+footer {
+  padding: 1em;
+}
+
+header h1 {
+  font-size: 24px;
+  padding: 0.5em;
+}
+
+header nav {
+  background-color: var(--black);
+}
+
+header nav ul li {
+  display: inline-block;
+  padding: 0.5em;
+}
+
+a {
+  color: var(--light-grey);
+  font-size: 12px;
+}
+
+ul li, h2, img:hover {
+  cursor: pointer;
+}
+
+ul li, img:hover {
+  background-color: var(--opacity_turquesa);
+}
+
+main {
+  width: 100%;
+}
+
+main section {
+  display: block;
+  border: 1px solid var(--turquesa);
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: var(--light-grey);
+  margin: 1em;
+}
+
+main section:first-child {
+  background-color: var(--opacity_turquesa);
+}
+
+section img {
+  border: 1px solid var(--grey);
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: var(--white);
+  width: 100%;
+}
+
+section h2 {
+  font-size: 20px;
+  color: var(--turquesa);
+  padding: 0.5em;
+}
+
+section p {
+  font-size: 12px;
+  padding-bottom: 0.5em;
+}
+
+section p:last-child {
+  text-align: left;
+}

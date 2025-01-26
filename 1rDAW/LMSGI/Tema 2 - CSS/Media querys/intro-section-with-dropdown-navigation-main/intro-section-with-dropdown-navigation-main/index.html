@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img src="./images/logo.svg" alt="logo">
+    <img id="btn-menu" src="./images/icon-menu.svg" alt="menu">
+
+    <nav id="nav-header">
+      <div id="btn-close">
+        <img src="./images/icon-close-menu.svg" alt="close-menu">
+      </div>
+      <ul>
+        <li>
+          <button>Feautures </button>
+          <img src="./images/icon-arrow-down.svg" alt="arrow-down">
+            <ul class="sublist">
+              <li>
+                <img src="./images/icon-todo.svg" alt="todo">
+                <span>Todo List</span>
+              </li>
+              <li>
+                <img src="./images/icon-calendar.svg" alt="calendar">
+                <span>Calendar</span>
+              </li>
+              <li>
+                <img src="./images/icon-reminders.svg" alt="reminders">
+                <span>Reminder</span>
+              </li>
+              <li>
+                <img src="./images/icon-planning.svg" alt="planning">
+                <span>Planning</span>
+              </li>
+            </ul>
+        </li>
+        <li>
+          <button>Company</button>
+          <img src="./images/icon-arrow-down.svg" alt="arrow-down">
+            <ul class="sublist">
+              <li>History</li>
+              <li>Our Team</li>
+              <li>Blog</li>
+            </ul>
+        </li>
+        <li>Careers</li>
+        <li>About</li>
+      </ul>
+
+      <div>
+        <button>Login</button>
+        <button>Register</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <picture>
+      <source srcset="./images/image-hero-mobile.png"
+      media="(max-width: 639px)">
+      <source srcset="./images/image-hero-desktop.png"
+      media="(min-width: 640px)">
+      <img src="./images/image-hero-mobile.png" alt="hero-mobile">
+    </picture>
+    <section>
+      <h2>Make remote work</h2>
+      <p>
+        Get your team in sync, no matter your location. Streamline processes, 
+        create team rituals, and watch productivity soar.
+      </p>
+      <button>Learn more</button>
+      <div>
+        <img src="./images/client-databiz.svg" alt="databiz">
+        <img src="./images/client-audiophile.svg" alt="audiophile">
+        <img src="./images/client-meet.svg" alt="meet">
+        <img src="./images/client-maker.svg" alt="maker">
+      </div>
+    </section>
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>

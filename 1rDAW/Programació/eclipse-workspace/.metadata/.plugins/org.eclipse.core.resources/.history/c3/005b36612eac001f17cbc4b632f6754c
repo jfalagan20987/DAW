@@ -1,0 +1,134 @@
+package ExercicisT6;
+
+import java.util.Scanner;
+
+public class BancResolt {
+	
+	static private CompteBancariResolt[] comptes = new CompteBancariResolt[100];
+	static private int indexComptes = 0;
+	static private Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		int opcio = 0;
+		
+		do {
+			
+			System.out.println("---MENÚ---");
+			System.out.println("1. Afegir compte");
+			System.out.println("2. Ingressar diners");
+			System.out.println("3. Reintegrar diners");
+			System.out.println("4. Mostrar dades del compte");
+			System.out.println("5. Sortir del programa");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcio) {
+			case 1:
+				afegirCompte();
+				break;
+			
+			case 2:
+				ingressar();
+				break;
+				
+			case 3:
+				reintegrar();
+				break;
+				
+			case 4:
+				mostrarDades();
+				break;
+				
+			case 5:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("Opció no vàlida!");
+			}
+			
+		}while(opcio!=5);
+
+	}
+
+	private static void afegirCompte() {
+		
+		String dni;
+		String nom;
+		double saldo;
+		
+		System.out.println("Introdueix el DNI del titular:");
+		dni = sc.next();
+		
+		System.out.println("Introdueix el nom del titular:");
+		nom = sc.next();
+		
+		System.out.println("Introdueix el saldo inicial:");
+		saldo = sc.nextDouble();
+		sc.nextLine();
+		
+		comptes[indexComptes] = new CompteBancariResolt(dni, nom, saldo);
+		indexComptes++;
+		
+	}
+	
+
+	private static void ingressar() {
+		
+		String dni;
+		double quantitat;
+		boolean trobat = false;
+		
+		System.out.println("Introdueix el DNI del titular:");
+		dni = sc.next();
+		
+		for (int i = 0 ; i < indexComptes ; i++) {
+			if (dni.equals(comptes[i].getDniTitular())) {
+				trobat = true;
+				System.out.println("Introdueix la quantitat que vol ingressar:");
+				quantitat = sc.nextDouble();
+				sc.nextLine();
+				comptes[i].ingressar(quantitat);
+				comptes[i].mostrarDades();
+			}
+		}
+		
+		if (!trobat) {
+			System.out.println("Aquest DNI ("+dni+") no correspon a cap compte!");
+		}
+		
+		
+	}
+	
+	
+	private static void reintegrar() {
+		
+		String dni;
+		double quantitat;
+		boolean trobat = false;
+		
+		System.out.println("Introdueix el DNI del titular:");
+		dni = sc.next();
+		
+		for (int i = 0 ; i < indexComptes ; i++) {
+			if (dni.equals(comptes[i].getDniTitular())) {
+				trobat = true;
+				System.out.println("Introdueix la quantitat que vol reintegrar:");
+				quantitat = sc.nextDouble();
+				sc.nextLine();
+				if (quantitat <= comptes[i].getSaldo()) {
+					comptes[i].reintegrar(quantitat);
+					comptes[i].mostrarDades();
+				}
+			}
+		}
+		
+		if (!trobat) {
+			System.out.println("Aquest DNI ("+dni+") no correspon a cap compte!");
+		}
+		
+	}
+
+}

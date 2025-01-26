@@ -1,0 +1,18 @@
+package Equip;
+
+public class Jugador extends Membre{
+	
+	private double altura;
+	
+	public Jugador(String nom, double salari, int edat, double altura) {
+		super(nom, salari, edat);
+		this.altura = altura;
+	}
+	
+	public void mostrarDades() {
+		System.out.println("Dades del jugador:");
+		super.mostrarDades();
+		System.out.println("Altura: "+altura+" metres");
+	}
+
+}

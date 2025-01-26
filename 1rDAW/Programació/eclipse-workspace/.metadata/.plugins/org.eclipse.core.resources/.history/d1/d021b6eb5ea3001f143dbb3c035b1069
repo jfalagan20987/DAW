@@ -1,0 +1,63 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class ExamenT4_2023 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String usuari[] = new String[100];
+	static String contrasenya[] = new String[100];
+	static String iniciUsuari[] = new String[100];
+	static String iniciContrasenya[] = new String[100];
+	static int intents = -1;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		registreUsuari();
+		entradaSistema();
+		
+		
+	}
+	
+	public static void registreUsuari() {
+		System.out.println("Registra el teu nom d'usuari:");
+		for (int i = 0 ; i < usuari.length ; i++) {
+			usuari[i] = sc.nextLine();
+			break;
+		}
+		
+		System.out.println("Registra la teva contrasenya:");
+		for (int j = 0 ; j < contrasenya.length ; j++) {
+			contrasenya[j] = sc.nextLine();
+			break;
+		}
+	}
+	
+	public static void entradaSistema() {
+		
+		do {
+			System.out.println("Introdueix el teu nom d'usuari:");
+			for (int i = 0 ; i < iniciUsuari.length ; i++) {
+				iniciUsuari[i] = sc.nextLine();
+				break;
+			}
+			
+			System.out.println("Introdueix la teva contrasenya:");
+			for (int j = 0 ; j < iniciContrasenya.length ; j++) {
+				iniciContrasenya[j] = sc.nextLine();
+				break;
+			}
+			
+			if (intents == 0) {
+				System.out.println("Has entrat al sistema. No hi ha hagut intents d'entrada incorrectes");
+			}else {
+				System.out.println("Has entrat al sistema. Hi ha hagut "+intents+" intents d'entrada incorrectes");
+			}
+		}while ((iniciUsuari.equals(usuari)) || (iniciContrasenya.equals(contrasenya)));
+		intents++;
+		
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package EjerciciosOO;
+
+public class Alumne extends Persona{
+	
+	private String nivell;
+
+	public Alumne(String nom, String dni, String edat, String nivell) {
+		super(nom, dni, edat);
+		this.nivell = nivell;
+	}
+	
+	public void mostrarDades()  {
+		super.mostrarDades();
+		System.out.println("Nivell: "+nivell);
+	}
+	
+	
+
+}

@@ -1,0 +1,20 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_26 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String text;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("Entra un text:");
+		text = sc.nextLine();
+		
+		System.out.println(text.charAt(0));
+
+	}
+	
+}

@@ -1,0 +1,38 @@
+package ExercicisT6;
+
+public class Banc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		CompteBancari comptes[] = new CompteBancari [10000];
+		int opcio = 0;
+		
+		System.out.println("---MENÚ---");
+		System.out.println("1. Ingressar diners.");
+		System.out.println("2. Retirar diners.");
+		System.out.println("3. Mostrar saldo.");
+		System.out.println("Tria una opció (1-3):");
+		
+		switch (opcio) {
+		
+		case 1:
+			ingressarDiners();
+			break;
+		
+		case 2:
+			retirarDiners();
+			break;
+			
+		case 3:
+			mostrarSaldo();
+			break;
+			
+		default:
+			System.out.println("Opció incorrecte!");
+			break;
+		}
+
+	}
+
+}

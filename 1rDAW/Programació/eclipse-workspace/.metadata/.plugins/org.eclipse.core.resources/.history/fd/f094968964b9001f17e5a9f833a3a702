@@ -1,0 +1,34 @@
+package AceptaElReto;
+
+import java.util.Scanner;
+
+public class Nochevieja {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int hora = 0, minuts = 0;
+		int minutsTotals;
+		
+		String reloj;
+		String[] entrada;
+		
+		do {
+			reloj = sc.nextLine();
+			entrada = reloj.split(":");
+			entrada[0] = reloj.valueOf(hora = sc.nextInt());
+			entrada[1] = reloj.valueOf(minuts = sc.nextInt());
+			
+			if (hora != 0 || minuts != 0) {
+				minutsTotals = ((24 - hora)*60) - minuts;
+				System.out.println(minutsTotals);
+			}else if (hora == 0 && minuts == 0){
+				System.exit(0);
+			}
+			
+		}while(hora >= 0 || minutas >= 0);
+
+	}
+
+}

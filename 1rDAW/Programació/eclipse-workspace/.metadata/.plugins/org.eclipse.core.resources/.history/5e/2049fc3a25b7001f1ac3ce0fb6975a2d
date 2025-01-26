@@ -1,0 +1,28 @@
+package AceptaElReto;
+
+public class ChiclesRegalo {
+
+	static java.util.Scanner in;
+
+    public static void casoDePrueba() {
+      
+        // TU CÓDIGO AQUÍ
+    	int numEnvoltorios;
+    	int numChicles;
+    	int chiclesComprados;
+    	
+    	System.out.println((numEnvoltorios = in.nextInt())+" "+(numChicles=in.nextInt()) +" "+ (chiclesComprados = in.nextInt()));
+    	
+    	
+
+    } // casoDePrueba
+
+    public static void main(String[] args) {
+
+        in = new java.util.Scanner(System.in);
+
+        int numCasos = in.nextInt();
+        for (int i = 0; i < numCasos; i++)
+            casoDePrueba();
+    } // main
+} // class solution

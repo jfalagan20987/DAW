@@ -1,0 +1,14 @@
+package EjerciciosOO;
+
+public class Professor {
+
+	private String asignatura;
+
+	public Professor(String asignatura) {
+		super();
+		this.asignatura = asignatura;
+	}
+	
+	
+
+}

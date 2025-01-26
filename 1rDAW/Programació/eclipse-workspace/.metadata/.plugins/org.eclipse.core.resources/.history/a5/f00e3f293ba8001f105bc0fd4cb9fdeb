@@ -1,0 +1,12 @@
+package ExercicisT6;
+
+public class Banc {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String comptes[] = new String [10000];
+
+	}
+
+}

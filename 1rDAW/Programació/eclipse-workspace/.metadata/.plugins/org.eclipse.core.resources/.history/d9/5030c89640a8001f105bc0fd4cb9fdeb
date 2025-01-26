@@ -1,0 +1,82 @@
+package ExercicisT6;
+
+import java.util.Scanner;
+
+public class CompteBancari {
+	
+	//Variables
+	private String dniTitular;
+	private String nomTitular;
+	private double saldo;
+	
+	//Setters i Getters
+	public void setDniTitular (String dniTitular) {
+		this.dniTitular = dniTitular;
+	}
+	
+	public String getDniTitular() {
+		return this.dniTitular;
+	}
+	
+	public void setNomTitular (String nomTitular) {
+		this.nomTitular = nomTitular;
+	}
+	
+	public String getNomTitular() {
+		return this.nomTitular;
+	}
+	
+	public void setSaldo (double saldo) {
+		this.saldo = saldo;
+	}
+	
+	public double getSaldo() {
+		return this.saldo;
+	}
+	
+	//Mètodes
+	public void ingressarDiners() {
+		
+		double saldoIngressat;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Quina quantitat vols ingressar?");
+		saldoIngressat = sc.nextDouble();
+		saldo += saldoIngressat;
+		System.out.println("S'han ingressat "+saldoIngressat+" euros al compte bancari de "+nomTitular+" amb DNI "+dniTitular+".");
+	}
+	
+	public void retirarDiners() {
+		
+		double saldoRetirat;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Quina quantitat vols retirar?");
+		saldoRetirat = sc.nextDouble();
+		saldo -= saldoRetirat;
+		System.out.println("S'han retirat "+saldoRetirat+" euros al compte bancari de "+nomTitular+" amb DNI "+dniTitular+".");
+	}
+	
+	public void mostrarSaldo() {
+		System.out.println("Al compte de "+nomTitular+", amb DNI "+dniTitular+" hi ha un total de "+saldo+" euros.");
+	}
+	
+	//Constructors
+	public CompteBancari() {
+			
+	}
+	
+	public CompteBancari(String dniTitular, String nomTitular, double saldo) {
+		this.dniTitular = dniTitular;
+		this.nomTitular = nomTitular;
+		this.saldo = saldo;
+	}
+	
+	public CompteBancari(String dniTitular, String nomTitular) {
+		this.dniTitular = dniTitular;
+		this.nomTitular = nomTitular;
+	}
+	
+	public CompteBancari(double saldo) {
+		this.saldo = saldo;
+	}
+
+}

@@ -1,0 +1,47 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class Exercici4_27 {
+	
+	static Scanner sc = new Scanner(System.in);
+	static String[] text = null;
+	static int midaText = 5;
+	static int counter = 0;
+	static String paraula;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		llegirParaules();
+		contarVocals();
+
+	}
+	
+	public static void llegirParaules() {
+		text = new String[midaText];
+		System.out.println("Entra una frase de 5 paraules:");
+		for (int i = 0 ; i < text.length ; i++) {
+			text [i] = sc.next();
+		}
+	}
+	
+	public static void contarVocals() {
+		for (int i = 0 ; i < text.length ; i++) {
+			paraula = text[i];
+			
+			for (int j = 0 ; j < paraula.length() ; j++) {
+				if ((paraula.charAt(j) == 'a') || (paraula.charAt(j) == 'A') || 
+						(paraula.charAt(j) == 'e') || (paraula.charAt(j) == 'E') ||
+						(paraula.charAt(j) == 'i') || (paraula.charAt(j) == 'I') ||
+						(paraula.charAt(j) == 'o') || (paraula.charAt(j) == 'O') ||
+						(paraula.charAt(j) == 'u') || (paraula.charAt(j) == 'U')) {
+					counter++;
+				}
+			}
+			System.out.println(text[i]+'\t'+counter);
+			counter = 0;
+		}
+	}
+
+}

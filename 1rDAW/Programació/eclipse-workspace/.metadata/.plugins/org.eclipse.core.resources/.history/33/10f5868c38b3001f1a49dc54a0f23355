@@ -1,0 +1,119 @@
+package Equip;
+
+import java.util.Scanner;
+
+public class GestioEquip {
+	
+	static Membre[] membres = new Membre[100];
+	static int index;
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		int opcio = 0;
+		
+		do {
+			System.out.println("---MENÚ---");
+			System.out.println("1. Nou jugador");
+			System.out.println("2. Nou entrenador");
+			System.out.println("3. Mostrar dades");
+			System.out.println("4. Sortir del programa");
+			System.out.println("Tria una opció (1-4):");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcio) {
+			case 1:
+				nouJugador();
+				break;
+			
+			case 2:
+				nouEntrenador();
+				break;
+				
+			case 3:
+				if (index > 0) {
+					for (int i = 0 ; i < index ; i++) {
+						membres[i].mostrarDades();
+					}
+				}else {
+					System.out.println("No hi ha cap membre registrat!\n");
+				}
+				break;
+			
+			case 4:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("Opció no vàlida!");
+			}
+			
+		}while (opcio!=4);
+
+	}
+	
+	public static void nouJugador() {
+		
+		String nom;
+		double salari;
+		int edat;
+		double altura;
+		String posicio;
+		
+		System.out.println("Introdueix el nom del jugador:");
+		nom = sc.nextLine();
+		
+		System.out.println("Introdueix el salari del jugador:");
+		salari = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introdueix l'edat del jugador:");
+		edat = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Quina és la seva altura (en metres):");
+		altura = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("A quina posició juga? (Base, Escolta, Alero, Ala-pívot, Pívot)");
+		posicio = sc.nextLine();
+		
+		membres[index] = new JugadorPosicio(nom, salari, edat, altura, posicio);
+		index++;
+		
+	}
+	
+	public static void nouEntrenador() {
+		
+		String nom;
+		double salari;
+		int edat;
+		int anysContracte;
+		String rol;
+		
+		System.out.println("Introdueix el nom de l'entrenador:");
+		nom = sc.nextLine();
+		
+		System.out.println("Introdueix el salari de l'entrenador:");
+		salari = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introdueix l'edat de l'entrenador:");
+		edat = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Quants any li resten al seu contracte?");
+		anysContracte = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Quin rol desenvolupa? (Entrenador Principal o Entrenador Assistent)");
+		rol = sc.nextLine();
+		
+		membres[index] = new RolEntrenador(nom, salari, edat, anysContracte, rol);
+		index++;
+		
+	}
+
+}

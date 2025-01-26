@@ -1,0 +1,16 @@
+package Equip;
+
+import java.util.Scanner;
+
+public class GestioEquip {
+	
+	static Membre[] membres = new Membre[100];
+	static int index;
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

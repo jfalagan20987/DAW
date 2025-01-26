@@ -1,0 +1,26 @@
+package PackageT5;
+
+public class Persona {
+	
+	String nom;
+	int edat;
+	
+	//Constructor
+	public Persona() {
+		System.out.println("Creant objecte...");
+	}
+	
+	public Persona(String nomPersona, int edatPersona) {
+		nom = nomPersona;
+		edat = edatPersona;
+	}
+	
+	public void caminar() {
+		System.out.println(nom+" està caminant.");
+	}
+	
+	public void imprimirDades() {
+		System.out.println("Nom: "+nom+"\n"+"Edat: "+edat);
+	}
+
+}

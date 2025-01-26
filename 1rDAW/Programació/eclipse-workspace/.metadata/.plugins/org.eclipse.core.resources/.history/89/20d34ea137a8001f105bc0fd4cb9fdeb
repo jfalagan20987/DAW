@@ -1,0 +1,18 @@
+package ExercicisT6;
+
+public class GestioPersones {
+
+	public static void main(String[] args) {
+		
+		Persona p1 = new Persona();
+		Persona p2 = new Persona();
+		Persona p3 = new Persona();
+		
+		p1.setDni("41517836T");
+		p1.setNom("Josep Falagán");
+		p1.setEdat((short) 30);
+		
+		p1.imprimirDades();
+	}
+
+}

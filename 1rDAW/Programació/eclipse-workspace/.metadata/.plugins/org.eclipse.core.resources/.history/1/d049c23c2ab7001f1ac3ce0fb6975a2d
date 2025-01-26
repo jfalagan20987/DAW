@@ -1,0 +1,40 @@
+package AceptaElReto;
+
+public class ChicleRegalo {
+	
+	static java.util.Scanner in;
+
+	public static void main(String[] args) {
+		
+		int numEnvoltorios;
+    	int numChicles;
+    	int chiclesComprados;
+    	
+    	int chiclesTotales;
+    	int envoltoriosFinales;
+    	
+    	numEnvoltorios = in.nextInt();
+    	numChicles = in.nextInt();
+    	chiclesComprados = in.nextInt();
+    	
+
+    	if (chiclesComprados == 0 && numChicles == 0 && chiclesComprados == 0) {
+    		System.exit(0);
+    	}
+    	
+    	if (chiclesComprados > ((chiclesComprados / numEnvoltorios)*numChicles)) {
+    		
+    		chiclesTotales = (chiclesComprados / numEnvoltorios) + chiclesComprados;
+        	if (chiclesComprados != numEnvoltorios) {
+        		chiclesTotales += numChicles;
+        	}
+        	envoltoriosFinales = chiclesTotales / chiclesComprados;
+        	
+        	System.out.println(chiclesTotales +" "+envoltoriosFinales);
+    	}else {
+    		System.out.println("RUINA");
+    	}
+
+	}
+
+}

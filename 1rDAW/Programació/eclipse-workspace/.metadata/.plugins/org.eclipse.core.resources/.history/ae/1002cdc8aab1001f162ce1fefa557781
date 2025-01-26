@@ -1,0 +1,12 @@
+package Persona;
+
+public class Profesor extends Persona{
+	
+	private String assignatura;
+	
+	public Profesor(String nom, String dni, int edat, String assignatura) {
+		super (nom, dni, edat);
+		this.assignatura = assignatura;
+	}
+
+}

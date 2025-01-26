@@ -1,0 +1,30 @@
+package ExercicisT6;
+
+public class GestioPersones {
+
+	public static void main(String[] args) {
+		
+		Persona p1 = new Persona();
+		Persona p2 = new Persona();
+		Persona p3 = new Persona();
+		
+		p1.setDni("41517836T");
+		p1.setNom("Josep Falagán");
+		p1.setEdat((short) 30);
+		System.out.println("Visualització de dades de la persona p1:");
+		p1.imprimirDades();
+		
+		p2.setDni("54873659B");
+		p2.setNom("Isaiah Hartenstein");
+		p2.setEdat((short) 26);
+		System.out.println("\n"+"Visualització de dades de la persona p2:");
+		p2.imprimirDades();
+		
+		p3.setDni("41514620W");
+		p3.setNom("Alex Caruso");
+		p3.setEdat((short) 30);
+		System.out.println("\n"+"Visualització de dades de la persona p3:");
+		p3.imprimirDades();
+	}
+
+}

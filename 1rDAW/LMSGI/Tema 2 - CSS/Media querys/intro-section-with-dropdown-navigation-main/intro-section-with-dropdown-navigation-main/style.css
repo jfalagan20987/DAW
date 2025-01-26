@@ -1,0 +1,172 @@
+:root {
+  --almost-white: hsl(0, 0%, 98%);
+  --medium-grey: hsl(0, 0%, 41%);
+  --almost-black: hsl(0, 0%, 8%);
+}
+
+@font-face {
+  font-family: "Epilogue";
+  src: url(./fonts/Epilogue/Epilogue-VariableFont_wght.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-family: "Epilogue";
+  color: var(--medium-grey);
+  list-style: none;
+}
+
+header {
+  padding: 10px;
+}
+
+header nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--almost-white);
+  width: 200px;
+  padding-left: 10px;
+}
+
+.nav-visible {
+  display: block;
+}
+
+header nav ul li {
+  padding: 8px 0;
+  margin-top: 10px;
+}
+
+.sublist {
+  padding-left: 20px;
+}
+
+#btn-close {
+  text-align: right;
+  padding: 10px;
+}
+
+nav button {
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+}
+
+nav div button {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+nav div {
+  margin-top: 20px;
+}
+
+nav div button:last-child {
+  border: 1px var(--medium-grey) solid;
+  border-radius: 0.5em;
+}
+
+img[alt="menu"]{
+  position: fixed;
+  right: 10px;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+}
+
+main section {
+  margin-top: 30px;
+}
+
+main picture img{
+  width: 100%;
+}
+
+main section h2 {
+  font-size: 30px;
+  color: var(--almost-black);
+}
+
+main section p {
+  padding: 20px;
+}
+
+main section button {
+  padding: 10px 20px;
+  background-color: var(--almost-black);
+  color: var(--almost-white);
+  border: none;
+  border-radius: 0.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main section button:hover {
+  background-color: var(--almost-white);
+  color: var(--almost-black);
+  border: 1px solid var(--almost-black);
+}
+
+main section div {
+  margin-top: 40px;
+}
+
+@media (min-width: 640px) {
+  main picture img, main section {
+    width: 40%;
+    display: inline-block;
+    position: absolute;
+  }
+
+  main section {
+    left: 20px;
+  }
+
+  #btn-menu, #btn-close, .sublist{
+    display: none;
+  }
+
+  header nav {
+    display: initial;
+    position: static;
+  }
+
+  header > nav > ul, header > nav > ul > li, nav div button, nav div {
+    display: inline-block;
+  }
+
+  nav div {
+    position: fixed;
+    right: 10px;
+    margin-top: 0;
+  }
+
+  nav div button {
+    width: auto;
+  }
+
+  img[alt="logo"] {
+    position: relative;
+    top: 10px;
+  }
+
+  header nav ul li {
+    padding: 0 20px;
+  }
+
+  header nav ul li:hover, nav button:hover {
+    color: var(--almost-black);
+    cursor: pointer;
+  }
+
+}

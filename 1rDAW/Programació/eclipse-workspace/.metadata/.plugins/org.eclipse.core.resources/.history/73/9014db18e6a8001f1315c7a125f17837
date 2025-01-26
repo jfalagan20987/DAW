@@ -1,0 +1,65 @@
+package ExercicisT6;
+
+import java.util.Scanner;
+
+public class Banc {
+	
+	static boolean no_sortir = true;
+	static String llistaComptes[] = new String[1000];
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int opcio = 0;
+		int index = 0;
+		
+		
+		System.out.println("Introdueix les teves dades (DNI, nom i saldo):");
+		CompteBancari compte = new CompteBancari(sc.nextLine(), sc.nextLine(), sc.nextDouble());
+
+		
+		while (no_sortir) {
+			do {
+				System.out.println("---MENÚ---");
+				System.out.println("1. Ingressar diners.");
+				System.out.println("2. Retirar diners.");
+				System.out.println("3. Mostrar saldo.");
+				System.out.println("4. Surt del programa.");
+				System.out.println("Tria una opció (1-4):");
+				opcio=sc.nextInt();
+			}while(opcio==0);
+			
+			switch (opcio) {
+			
+			case 1:
+				compte.ingressarDiners();
+				break;
+			
+			case 2:
+				compte.retirarDiners();
+				break;
+				
+			case 3:
+				compte.mostrarSaldo();
+				break;
+				
+			case 4:
+				no_sortir = sortirPrograma();
+				break;
+				
+			default:
+				System.out.println("Opció incorrecte!");
+				break;
+			}
+		}
+
+	}
+	
+	public static boolean sortirPrograma() {
+		no_sortir = false;
+		System.out.println("Has sortit del programa.");
+		return no_sortir;
+	}
+
+}

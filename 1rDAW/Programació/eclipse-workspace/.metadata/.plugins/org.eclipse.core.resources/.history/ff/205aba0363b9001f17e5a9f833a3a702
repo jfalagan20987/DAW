@@ -1,0 +1,23 @@
+package AceptaElReto;
+
+import java.util.Scanner;
+
+public class Nochevieja {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int hora, minuts;
+		
+		String reloj;
+		String[] entrada = entrada.split(":");
+		
+		do {
+			reloj = sc.nextLine();
+			entrada.
+		}while(true);
+
+	}
+
+}

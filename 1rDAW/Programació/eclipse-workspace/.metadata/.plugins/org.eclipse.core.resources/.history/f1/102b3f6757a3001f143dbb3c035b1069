@@ -1,0 +1,14 @@
+package NewPackage;
+
+public class ExamenT4_2023 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("---MENÚ---");
+		System.out.println("1. Introduir nou usuari i contrasenya");
+		System.out.println("2. Entrar al sistema");
+		System.out.println("3. Sortir del programa");
+	}
+
+}

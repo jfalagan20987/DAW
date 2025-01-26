@@ -1,0 +1,9 @@
+package ExercicisT6;
+
+public class Persona {
+	
+	private String dni;
+	private String nom;
+	private short edat;
+
+}

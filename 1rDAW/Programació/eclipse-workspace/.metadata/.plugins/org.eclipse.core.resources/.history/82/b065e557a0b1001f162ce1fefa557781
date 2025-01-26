@@ -1,0 +1,16 @@
+package Data;
+
+public class DataResolt {
+	
+	private int dia;
+	private int mes;
+	private int any;
+	
+	public DataResolt(int dia, int mes, int any) {
+		super();
+		this.dia = dia;
+		this.mes = mes;
+		this.any = any;
+	}
+
+}

@@ -1,0 +1,63 @@
+package ExercicisT6;
+
+import java.util.Scanner;
+
+public class BancResolt {
+	
+	static private CompteBancariResolt[] comptes = new CompteBancariResolt[100];
+	static private int indexComptes = 0;
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int opcio = 0;
+		
+		do {
+			
+			System.out.println("---MENÚ---");
+			System.out.println("1. Afegir compte");
+			System.out.println("2. Ingressar diners");
+			System.out.println("3. Reintegrar diners");
+			System.out.println("4. Mostrar dades del compte");
+			System.out.println("5. Sortir del programa");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcio) {
+			case 1:
+				afegirCompte();
+				break;
+			
+			case 2:
+				ingressar();
+				break;
+				
+			case 3:
+				reintegrar();
+				break;
+				
+			case 4:
+				mostrarDades();
+				break;
+				
+			case 5:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+			
+			default:
+				System.out.println("Opció no vàlida!");
+			}
+			
+		}while(opcio!=5);
+
+	}
+
+	private static void afegirCompte() {
+		
+		
+		
+	}
+
+}

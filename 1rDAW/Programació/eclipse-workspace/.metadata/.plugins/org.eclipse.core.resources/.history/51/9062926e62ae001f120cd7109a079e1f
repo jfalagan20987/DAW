@@ -1,0 +1,23 @@
+package Instituto;
+
+public class GestioInstitut {
+
+	
+	static Persona [] persones = new Persona[100];
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Alumne a1 = new Alumne("4440000M","Joan", "1rDAW");
+		Professor p1 = new Professor ("4150000K","Miquel", "Programació");
+		
+		persones[0] = a1;
+		persones[1] = p1;
+		
+		a1.mostrarDades();
+		p1.mostrarDades();
+		
+		
+	}
+
+}

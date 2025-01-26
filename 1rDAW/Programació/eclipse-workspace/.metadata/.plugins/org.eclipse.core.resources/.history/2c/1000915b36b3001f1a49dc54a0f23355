@@ -1,0 +1,18 @@
+package Equip;
+
+public class Entrenador extends Membre{
+	
+private String rol;
+	
+	public Entrenador(String nom, double salari, int edat, String rol) {
+		super(nom, salari, edat);
+		this.rol = rol;
+	}
+	
+	public void mostrarDades() {
+		System.out.println("Dades de l'entrenador:");
+		super.mostrarDades();
+		System.out.println("Rol: "+rol);
+	}
+
+}

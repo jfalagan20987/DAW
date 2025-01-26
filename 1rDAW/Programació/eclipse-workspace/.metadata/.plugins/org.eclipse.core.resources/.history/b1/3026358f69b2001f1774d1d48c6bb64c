@@ -1,0 +1,14 @@
+package Persona;
+
+public class Institut {
+	
+	static Persona[] persones = new Persona[100];
+
+	public static void main(String[] args) {
+		
+		Alumne alumne1 = new Alumne("Josep", "41512159B", 30, "FP Grau Superior");
+		
+		System.out.println(alumne1);
+	}
+
+}

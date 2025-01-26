@@ -1,0 +1,53 @@
+package NewPackage;
+
+import java.util.Scanner;
+
+public class ExamenT4_2023 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int opcio = 0;
+		
+		String usuari = null;
+		String contrasenya = null;
+		
+		String iniciUsuari;
+		String iniciContrasenya;
+		
+		int intents = 0;
+		
+		System.out.println("---MENÚ---");
+		System.out.println("1. Introduir nou usuari i contrasenya");
+		System.out.println("2. Entrar al sistema");
+		System.out.println("3. Sortir del programa");
+		System.out.println("Tria una opció (1-3):");
+		opcio = sc.nextInt();
+		
+		
+		switch (opcio) {
+		case 1 :
+			System.out.println("Registra el teu nom d'usuari:");
+			usuari = sc.nextLine();
+			
+			System.out.println("Estableix una contrasenya:");
+			contrasenya = sc.nextLine();
+			
+		case 2 :
+			System.out.println("Introdueix el teu usuari i contrasenya");
+			iniciUsuari = sc.nextLine();
+			iniciContrasenya = sc.nextLine();
+			
+			if (iniciUsuari.equals(usuari) && (iniciContrasenya.equals(contrasenya))) {
+				System.out.println("Has entrat al sistema.");
+			}
+			
+		case 3:
+			
+			
+		}
+	}
+
+}
