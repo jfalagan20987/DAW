@@ -21,6 +21,10 @@ public class Enginyer extends Treballador{
 		System.out.println("Medi ambient: "+medi+"\n");
 	}
 	
+	/*public String toString() {
+		return super.toString();
+	}*/
+	
 	@Override
 	public void treballar() {
 		System.out.println("Resol problemes tècnics i dissenya solucions. \n");

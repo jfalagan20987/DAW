@@ -1,0 +1,28 @@
+package Llibres;
+
+public class ArmariLlibres{
+	
+	Llibre[] llibres = new Llibre[10];
+	int index = 0;
+	
+	public void afegirLlibre(Llibre llibre) {
+		llibres[index] = llibre;
+		index++;
+	}
+	
+	public void eliminarLlibre(Llibre llibre) {
+		llibres[index] = null;
+	}
+	
+	public void modificarLlibre(Llibre llibre) {
+		llibres[index] = llibre;
+	}
+	
+	public String toString() {
+		String dadesLlibres = "";
+		for(int i = 0 ; i < index ; i++) {
+			dadesLlibres = dadesLlibres + "---DADES LLIBRE---" + "\n" + "Títol: " + llibres[i].getTitol() + "\n" + "Autor: " + llibres[i].getAutor() + "\n";
+		}
+		return dadesLlibres;
+	}
+}

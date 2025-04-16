@@ -1,0 +1,26 @@
+package FiguresGeometriques;
+
+public class Quadrat extends FiguraGeometrica{
+	
+	private int costat;
+	private int area;
+	private int perimetre;
+	
+	public Quadrat(int posicioX, int posicioY, int costat) {
+		super(posicioX, posicioY);
+		this.costat = costat;
+	}
+	
+	public void calculArea(){
+		area = costat*2;
+	}
+	
+	public void calculPerimetre() {
+		perimetre = costat*4;
+	}
+	
+	public String toString() {
+	return super.toString() + "\n Àrea quadrat: " + area + "\n Perímetre rectangle: " + perimetre;
+	}
+
+}

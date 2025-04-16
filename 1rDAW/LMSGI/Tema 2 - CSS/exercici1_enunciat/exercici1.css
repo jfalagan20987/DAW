@@ -1,0 +1,152 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  
+  text-decoration: none;
+}
+
+body {
+  color: #252323;
+  background-color: #FEF9FF;
+}
+
+header {  
+  color:#CAD178;
+  height: 70px;
+  background-color: #434960;
+}
+
+.logo-square {
+  height: 80px;
+}
+
+.logo-landscape {
+  height: 25px;  
+}
+
+.menu-item {
+  margin: 0 10px;  
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+.nav-primary .menu-item:hover {
+  text-decoration: underline;
+}
+
+aside {
+  padding: 10px;
+  background-color: #CAD178;
+}
+
+a {
+  padding: 10px 0;
+  color: #252323;
+}
+
+a:hover {
+  font-weight: bold;  
+}
+
+.item {
+  padding: 100px;
+  margin: 10px;
+  background-color: #95818D;
+}
+
+.item:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.nav-primary, img.logo-square, .nav-text {
+  display: none;
+}
+
+div.nav-logo, .nav-icons {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+aside nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.products-container div {
+  text-align: center;
+  height: 220px;
+}
+
+.menu-item {
+  align-self: center;
+}
+
+/*TABLET*/
+@media (min-width: 768px) {
+  img.logo-square, .nav-text {
+    display: initial;
+  }
+
+  .logo-landscape {
+    display: none;
+  }
+
+  header {
+    height: 100px;
+  }
+}
+
+/*DESKTOP*/
+@media (min-width: 992px) {
+  nav.nav-primary {
+    display: flex;
+  }
+
+  .fa-bars {
+    display: none;
+  }
+
+  main {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  aside {
+    height: calc(100vH - 100px);
+    width: 200px;
+    justify-self: flex-start;
+  }
+
+  aside nav {
+    height: calc(100vH - 120px);
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .products-container {
+    align-items: center;
+    width: calc(100vW - 200px);
+  }
+}

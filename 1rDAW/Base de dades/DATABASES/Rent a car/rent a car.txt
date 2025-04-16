@@ -81,3 +81,205 @@ VALUES (1, 1, '2024-10-01', '2024-10-07', 80),
 (5, 9, '2024-11-15', '2024-11-17', 110),
 (7, 3, '2024-12-21', '2025-01-12', 90),
 (9, 10, '2025-03-01', '2025-03-09', 100);
+
+
+------------------------------------------------
+------------------------------------------------
+------------------------------------------------
+
+-- Create procedure addReservation
+
+DELIMITER $$
+
+CREATE PROCEDURE addReservation()
+
+BEGIN
+	-- Declare variables
+	DECLARE var_customer_id INT;
+	DECLARE var_car_id INT;
+	DECLARE var_date_in DATE;
+	DECLARE var_date_out DATE;
+	DECLARE var_price_per_day INT;
+	
+	-- Get dates
+	SET var_date_in = SUBDATE(CURRENT_DATE, INTERVAL (FLOOR(1+RAND()*400)) DAY);
+	SET var_date_out = DATE_ADD(var_date_in, INTERVAL (FLOOR(RAND()*7+1)) DAY);
+	
+	-- Get random customer
+	SELECT customer_id INTO var_customer_id
+	FROM customers
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Get an available car
+	SELECT car_id INTO var_car_id
+	FROM cars
+	WHERE car_id NOT IN (SELECT car_id
+						FROM reservations
+						WHERE date_in <= var_date_out
+						AND date_out >= var_date_in)
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Get price
+	SELECT price_per_day INTO var_price_per_day
+	FROM cars
+	WHERE car_id = var_car_id;
+	
+	-- Generate the reservation
+	IF var_car_id IS NOT NULL THEN
+		INSERT INTO reservations (customer_id, car_id, date_in, date_out, price_per_day)
+		VALUES (var_customer_id, var_car_id, var_date_in, var_date_out, var_price_per_day);
+	END IF;
+END$$
+
+DELIMITER ;
+
+------------------------------------------------------------
+
+REPORTS:
+	
+-- Total income per car
+CREATE VIEW cars_total_income_view AS
+
+SELECT c.car_id, CONCAT(c.brand, ' ', c.model) AS car_name, c.plate, c.car_class, c.price_per_day, SUM(r.total_price) AS total_income
+FROM cars AS c
+INNER JOIN reservations_view AS r ON c.car_id = r.car_id
+GROUP BY car_id
+ORDER BY total_income DESC;
+
+-- Total days a car has been rented
+CREATE VIEW cars_days_rented_view AS
+
+SELECT c.car_id, CONCAT(c.brand, ' ', c.model) AS car_name, c.plate, c.car_class, c.price_per_day, SUM(r.total_days) AS total_days
+FROM cars AS c
+INNER JOIN reservations_view AS r ON c.car_id = r.car_id
+GROUP BY car_id
+ORDER BY total_days DESC;
+
+-- Total income per year
+CREATE VIEW year_total_income_view AS
+
+SELECT YEAR(date_in) AS year, SUM(total_price) AS total_income
+FROM reservations_view
+GROUP BY YEAR(date_in)
+ORDER BY year DESC;
+
+-- Total income per quarter
+CREATE VIEW quarter_total_income_view AS
+
+SELECT YEAR(date_in) AS year, QUARTER(date_in) AS quarter, SUM(total_price) AS total_income
+FROM reservations_view
+GROUP BY year, quarter
+ORDER BY year DESC, quarter ASC;
+
+-- Total reservations per customer
+CREATE VIEW reservations_per_customer_view AS
+
+SELECT c.customer_id, CONCAT(c.forename, ' ', UPPER(c.surname)) AS customer_name, COUNT(r.reservation_id) AS total_reservations, SUM(r.total_price) AS total_income
+FROM customers AS c
+INNER JOIN reservations_view AS r ON c.customer_id = r.customer_id
+GROUP BY c.customer_id
+ORDER BY total_reservations DESC;
+
+
+
+------------------------------------------------------------------
+-- Special offer for cars with long inactivity
+
+-- New view
+CREATE VIEW reservations_view_specialoffers AS
+
+SELECT r.car_id AS car_id, ADDDATE(r.date_out, INTERVAL 1 DAY) AS free_date_in,
+	(SELECT SUBDATE(re.date_in, INTERVAL 1 DAY)
+	FROM reservations AS re
+	WHERE re.car_id = r.car_id AND re.date_in > r.date_out
+	ORDER BY re.date_in ASC
+	LIMIT 1) AS free_date_out,
+	(SELECT c.price_per_day
+	FROM cars AS c
+	WHERE c.car_id = r.car_id) AS price_per_day,
+	(SELECT DATEDIFF(free_date_in, CURRENT_DATE)
+    FROM reservations
+    WHERE DATEDIFF(free_date_in, CURRENT_DATE) > 0
+    LIMIT 1) AS days_until_free_date_in
+FROM reservations AS r
+WHERE ADDDATE(r.date_out, INTERVAL 1 DAY) > CURRENT_DATE
+ORDER BY r.car_id, free_date_in;
+
+
+CREATE VIEW specialoffers_view AS
+
+SELECT car_id, free_date_in, free_date_out, price_per_day, days_until_free_date_in,
+	(specialDiscount(days_until_free_date_in)) AS discount,
+	FLOOR(price_per_day - ((price_per_day * (specialDiscount(days_until_free_date_in))) / 100)) AS special_offer_price
+FROM reservations_view_specialoffers
+WHERE days_until_free_date_in <= 15;
+
+
+-- Stored function to calculate de special offer's discount (CASE)
+DELIMITER $$
+
+CREATE FUNCTION specialDiscount2(var_days_until_free_date INT)
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+	-- Variables
+	DECLARE var_discount INT;
+	
+	-- case
+	IF var_days_until_free_date <= 2 AND var_days_until_free_date > 0 THEN
+		SET var_discount = 40;
+	ELSEIF var_days_until_free_date <= 5 AND var_days_until_free_date > 2 THEN 
+		SET var_discount = 30;
+	ELSEIF var_days_until_free_date <= 10 AND var_days_until_free_date > 5 THEN
+		SET var_discount = 20;
+	ELSE SET var_discount = 10;
+	END IF;
+	RETURN (var_discount);
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE showCarsFreeDates()
+
+BEGIN
+	
+END$$
+
+DELIMITER ;
+
+
+*****
+EXTENSIÓ
+
+<xs:complexType name="extensio1">
+	<xs:simpleContent>
+		<xs:extension base:"xs:string">
+			<xs:attribute name="atribut1" type="xs:positiveInteger" use="required"/>
+		</xs:extension>
+	</xs:simpleContent>
+</xs:complexType>
+
+
+RESTRICCIÓ
+<xs:simpleType name="restriccio1">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="">
+		<xs:pattern>
+		<xs:totalDigits>
+		<xs:fractionDigits>
+		<xs:maxInclusive>
+		<xs:maxExclusive>
+		
+	</xs:restriction>
+</xs:simpleType>
+
+
+PATTERN ID PRODUCTE
+
+prod[0-9]{1,2}[a-zA-Z]

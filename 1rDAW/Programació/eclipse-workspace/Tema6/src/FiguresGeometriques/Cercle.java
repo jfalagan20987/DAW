@@ -1,0 +1,28 @@
+package FiguresGeometriques;
+
+import java.lang.Math;
+
+public class Cercle extends FiguraGeometrica{
+
+	private int radi;
+	private double area;
+	private double perimetre;
+	
+	public Cercle(int posicioX, int posicioY, int radi) {
+		super(posicioX, posicioY);
+		this.radi = radi;
+	}
+	
+	public void calculArea() {
+		area = Math.PI * Math.pow(radi, 2);
+	}
+	
+	public void calculPerimetre() {
+		perimetre = Math.PI * (radi*2);
+	}
+	
+	public String toString() {
+		return super.toString() + "\n Àrea cercle: " + area + "\n Perímetre cercle: " + perimetre + "\n ------------------";
+	}
+	
+}

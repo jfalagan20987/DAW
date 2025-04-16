@@ -1,0 +1,14 @@
+package FiguresGeometriques;
+
+public class Cercle extends FiguraGeometrica{
+
+	private int radi;
+	private double area;
+	private double perimetre;
+	
+	public Cercle(int posicioX, int posicioY, int radi) {
+		super(posicioX, posicioY);
+		this.radi = radi;
+	}
+	
+}

@@ -1,0 +1,70 @@
+[
+  {"spa":[
+    {
+      "total":80,
+      "tickets":[
+        {
+          "service_category": "spa",
+          "ticket_number": 1845,
+          "service_date": "2025-04-05",
+          "quantity": 1,
+          "unit_price": 40 
+        },
+
+        {
+          "service_category": "spa",
+          "ticket_number": 1878,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 40
+        }
+      ]
+    }
+  ]},
+
+  {"gym":[
+    {
+      "total":30,
+      "tickets":[
+        {
+          "service_category": "gym",
+          "ticket_number": 3775,
+          "service_date": "2025-04-05",
+          "quantity": 2,
+          "unit_price": 10 
+        },
+
+        {
+          "service_category": "gym",
+          "ticket_number": 3896,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 10
+        }
+      ]
+    }
+  ]},
+
+  {"restaurant":[
+    {
+      "total":110,
+      "tickets":[
+        {
+          "service_category": "restaurant",
+          "ticket_number": 3004,
+          "service_date": "2025-04-05",
+          "quantity": 1,
+          "unit_price": 60 
+        },
+
+        {
+          "service_category": "restaurant",
+          "ticket_number": 3570,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 50
+        }
+      ]
+    }
+  ]}
+]

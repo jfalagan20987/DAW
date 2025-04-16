@@ -2,8 +2,8 @@ package Treballadors;
 
 public class Treballador {
 	
-	String nom;
-	double salari;
+	private String nom;
+	private double salari;
 	
 	public Treballador(String nom, double salari) {
 		this.nom = nom;
@@ -21,15 +21,19 @@ public class Treballador {
 	}
 	
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
 	
 	public double getSalari() {
-		return this.salari;
+		return salari;
 	}
 	
 	public void treballar() {
 		System.out.println("Aquest treballador realitza tasques generals. \n");
+	}
+	
+	public String toString() {
+		return "Nom: " + nom + "\n" + "Salari: " + salari + "€";
 	}
 
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<curriculums>
+  <cv> <!--<cv id="1"></cv>-->
+    <nom>Josep</nom>
+    <llinatges>Falagán</llinatges>
+    <data_naixement>
+      <dia>30</dia>
+      <mes>10</mes>
+      <any>1994</any>
+    </data_naixement>
+    <residencia>
+      <ciutat>Alaior</ciutat>
+      <pais>Espanya</pais>
+    </residencia>
+    <contacte>
+      <telefon>622017795</telefon>
+      <mail>jfalagan20987@iesjoanramis.org</mail>
+      <linkedin>perfil falso 123</linkedin>
+    </contacte>
+    <descripcio>
+      fkdgdkfglñkkkkkkkkkkkkkkkkkkdlk,grpogkorgkdrfgdg
+    </descripcio>
+    <competencies>
+      <competencia nivell="B2" nom="anglès"/>
+
+      <competencia>
+        <nom>anglès</nom>
+        <nivell>B2</nivell>
+      </competencia>
+    </competencies>
+    <formacions_academiques>
+      <formacio_academica>
+        <titulacio>CFGS Desenvolupament d'Aplicacions Web</titulacio>
+        <centre>IES Joan Ramis i Ramis</centre>
+        <any_titulacio>2026</any_titulacio>
+      </formacio_academica>
+
+      <formacio_academica titulacio="Grau en &quot;se suposa&quot; Periodisme" centre="UCM" any_titulacio="2020"/>
+    </formacions_academiques>
+    <experiencia_profesional>
+      <lloc_feina any_inici="2020" any_acabament="2024">
+        <nom>Cambrer</nom>
+        <empresa>Caballo Triay SL</empresa>
+      </lloc_feina>
+    </experiencia_profesional>
+  </cv>
+
+  <cv>
+
+  </cv>
+</curriculums>

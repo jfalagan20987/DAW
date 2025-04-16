@@ -1,0 +1,30 @@
+package FiguresGeometriques;
+
+public class Rombe extends FiguraGeometrica{
+	
+	private int diagonalMajor;
+	private int diagonalMenor;
+	private int costat;
+	private double area;
+	private double perimetre;
+	
+	public Rombe(int posicioX, int posicioY, int diagonalMajor, int diagonalMenor, int costat) {
+		super (posicioX, posicioY);
+		this.diagonalMajor = diagonalMajor;
+		this.diagonalMenor = diagonalMenor;
+		this.costat = costat;
+	}
+	
+	public void calculArea() {
+		area = (diagonalMajor * diagonalMenor) / 2;
+	}
+	
+	public void calculPerimetre() {
+		perimetre = costat*4;
+	}
+	
+	public String toString() {
+		return super.toString() + "\n Àrea rombe: " + area + "\n Perímetre rombe: " + perimetre;
+	}
+
+}

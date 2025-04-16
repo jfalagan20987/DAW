@@ -1,0 +1,48 @@
+*{
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 80px 5fr 1fr 80px;
+  grid-template-areas:
+      "cabecera"
+      "principal"
+      "lateral"
+      "pie";
+  height: 100vH;
+}
+
+header, footer {
+  background-color: darkseagreen;
+}
+
+header {
+  grid-area: cabecera;
+}
+
+footer {
+  grid-area: pie;
+}
+
+main {
+  background-color: blanchedalmond;
+  grid-area: principal;
+}
+
+aside {
+  background-color: rgb(74, 102, 74);
+  grid-area: lateral;
+}
+
+@media (width > 800px){
+  body {
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 80px auto 80px;
+    grid-template-areas:
+      "cabecera cabecera"
+      "lateral principal"
+      "pie pie";
+  }
+}

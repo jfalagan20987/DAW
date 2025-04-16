@@ -2,10 +2,8 @@ package Llibres;
 
 public class ArmariLlibres{
 	
-	Llibre[] llibres = new Llibre[10];
+	Llibre[] llibres = new Llibre[100];
 	int index = 0;
-	String titol;
-	String autor;
 	
 	public void afegirLlibre(Llibre llibre) {
 		llibres[index] = llibre;
@@ -13,16 +11,41 @@ public class ArmariLlibres{
 	}
 	
 	public void eliminarLlibre(Llibre llibre) {
-		llibres[index] = null;
+		String comprovar;
+		comprovar = llibre.getTitol();
+		for (int i = 0 ; i < index ; i++) {
+			if (llibres[i] != null) {
+				llibres[i].getTitol();
+				if (comprovar.equals(llibres[i].getTitol())) {
+					llibres[i] = null;
+				}
+			}
+		}
 	}
 	
 	public void modificarLlibre(Llibre llibre) {
-		llibres[index] = llibre;
+		//Aquesta part no me surt!
+		String comprovar = "";
+		String nouTitol = "";
+		String nouAutor = "";
+		comprovar = llibre.getTitol();
+		for (int i = 0 ; i < index ; i++) {
+			llibres[i].getTitol();
+			if (comprovar.equals(llibres[i].getTitol())) {
+				llibres[i] = null;
+				llibre = new Llibre(nouTitol, nouAutor);
+				llibres[i] = llibre;
+			}
+		}
 	}
 	
-	public void mostrarLlibres() {
-		System.out.println("---DADES LLIBRE---");
-		System.out.println("Títol: "+ titol);
-		System.out.println("Autor: "+ autor);
+	public String toString() {
+		String dadesLlibres = "";
+		for(int i = 0 ; i < index ; i++) {
+			if(llibres[i] != null) {
+				dadesLlibres = dadesLlibres + "---DADES LLIBRE---" + "\n" + "Títol: " + llibres[i].getTitol() + "\n" + "Autor: " + llibres[i].getAutor() + "\n";
+			}
+		}
+		return dadesLlibres;
 	}
 }

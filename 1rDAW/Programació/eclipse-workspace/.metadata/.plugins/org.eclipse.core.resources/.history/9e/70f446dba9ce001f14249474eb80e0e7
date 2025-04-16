@@ -1,0 +1,9 @@
+package FiguresGeometriques;
+
+public class Cercle extends FiguraGeometrica{
+
+	private int radi;
+	private double area;
+	private double perimetre;
+	
+}

@@ -1,0 +1,16 @@
+package FiguresGeometriques;
+
+public class CalculsFigures {
+
+	public static void main(String[] args) {
+		
+		FiguraGeometrica[] figures = new FiguraGeometrica[4];
+		
+		figures[0] = new Rectangle(10, 20, 18, 9);
+		figures[1] = new Quadrat(5, 7, 5);
+		figures[2] = new Cercle(20, 18, 7);
+		figures[3] = new Rombe(30, 25, 10, 8, 12);
+
+	}
+
+}

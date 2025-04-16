@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Element complexe -->
+  <xs:element name="missatge">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="de" type="xs:string"/>
+        <xs:element name="per_a">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="p" type="tipusparagraf" minOccurs="1" maxOccurs="1"/> <!-- min y max per definir les vegades que hi pot ser (1 per defecte, unbounded=ilimitat)-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="missatge">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="p" type="tipusparagraf" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="data">
+          <!-- <xs:complexType mixed="true"> -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="any" type="xs:int"/>
+            </xs:sequence>
+            <xs:attribute name="dia" type="xs:int" use="optional"/>
+          </xs:complexType>
+        </xs:element> <!-- AAAA-MM-DD-->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Element simple
+  <xs:element name="missatge" type="xs:string"/> -->
+
+  <!-- Declarar elements per poder reutilitzar -->
+  <xs:simpleType name="tipusparagraf">
+    <xs:restriction base="xs:string">
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

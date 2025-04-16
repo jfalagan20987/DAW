@@ -1,0 +1,99 @@
+package Llibres;
+
+import java.util.Scanner;
+
+public class Biblioteca {
+	
+	static ArmariLlibres aventura = new ArmariLlibres();
+	static ArmariLlibres fantasia = new ArmariLlibres();
+	static ArmariLlibres terror = new ArmariLlibres();
+	static int index;
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		
+		int opcio = 0;
+		
+		do {
+			System.out.println("---MENÚ---");
+			System.out.println("1. Afegir nou llibre");
+			System.out.println("2. Modificar un llibre");
+			System.out.println("3. Eliminar un llibre");
+			System.out.println("4. Mostrar tots els llibres");
+			System.out.println("5. Sortir del programa");
+			System.out.println("Tria una opció (1-5):");
+			opcio = sc.nextInt();
+			sc.nextLine();
+			
+			switch(opcio) {
+			
+			case 1:
+				afegirLlibre();
+				break;
+			
+			/*case 2:
+				modificarLlibre();
+				break;
+				
+			case 3:
+				eliminarLlibre();
+				break;
+				
+			case 4:
+				mostrarLlibres();
+				break;*/
+				
+			case 5:
+				System.out.println("Sortint del programa...");
+				System.exit(0);
+				break;
+				
+			default:
+				System.out.println("Opció incorrecte!");
+			}
+			
+		}while (opcio!=5);
+
+	}
+	
+	public static void afegirLlibre() {
+		
+		String titol;
+		String autor;
+		Llibre llibre;
+		int opcio = 0;
+		
+		System.out.println("A quin gènere literari pertany el llibre?");
+		System.out.println("1. Aventura");
+		System.out.println("2. Fantasia");
+		System.out.println("3. Terror");
+		System.out.println("Tria una opció (1-3):");
+		opcio = sc.nextInt();
+		sc.nextLine();
+		
+		switch (opcio) {
+		
+		case 1:
+			System.out.println("Introdueix el títol del llibre:");
+			titol = sc.nextLine();
+			
+			System.out.println("Introdueix el seu autor:");
+			autor = sc.nextLine();
+			llibre = new Llibre(titol, autor);
+			aventura.afegirLlibre(llibre);
+			break;
+		
+		/*case 2:
+			fantasia.afegirLlibre(llibre);
+			break;
+			
+		case 3:
+			terror.afegirLlibre(llibre);
+			break;*/
+			
+		default:
+			System.out.println("Opció incorrecte!");
+		}
+	}
+
+}

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="p1.nom = &quot;Josep&quot;;"/>
+		<item key="selection" value="&#x09;public void mostrarLlibres() {"/>
 		<list key="findhistory">
+			<item value="&#x09;public void mostrarLlibres() {"/>
 			<item value="p1.nom = &quot;Josep&quot;;"/>
 		</list>
 	</section>

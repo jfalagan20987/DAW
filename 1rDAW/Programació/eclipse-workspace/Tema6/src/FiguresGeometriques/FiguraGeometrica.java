@@ -1,0 +1,17 @@
+package FiguresGeometriques;
+
+public class FiguraGeometrica {
+	
+	private int posicioX;
+	private int posicioY;
+	
+	public FiguraGeometrica (int posicioX, int posicioY) {
+		this.posicioX = posicioX;
+		this.posicioY = posicioY;
+	}
+	
+	public String toString() {
+		return "Posició X: " + posicioX + "\n Posició Y: " + posicioY;
+	}
+
+}

@@ -1,0 +1,189 @@
+-- Stored procedure to insert random data in shopping_cart table
+
+DELIMITER $$
+
+CREATE PROCEDURE addToCart ()
+
+BEGIN
+	-- Declare variables
+	DECLARE var_customer_id INT;
+	DECLARE var_product_id INT;
+	DECLARE var_quantity INT;
+
+	-- Get data
+	SET var_customer_id = (SELECT customer_id FROM customers
+							ORDER BY RAND()
+							LIMIT 1);
+							
+	SET var_product_id = (SELECT product_id FROM products
+							ORDER BY RAND()
+							LIMIT 1);
+
+	SET var_quantity =  FLOOR(RAND()*10+1);
+	
+	INSERT INTO shopping_cart(customer_id, product_id, quantity)
+	VALUES(var_customer_id, var_product_id, var_quantity)
+	ON DUPLICATE KEY
+	UPDATE quantity = quantity + VALUES(quantity);
+END$$
+
+DELIMITER ;
+
+--------------------------------------------------------------
+
+-- Place an order from a random customer in the shopping cart table
+
+DELIMITER $$
+
+CREATE PROCEDURE placeOrder()
+
+BEGIN
+	-- Declare variables
+	DECLARE var_customer_id INT;
+	DECLARE var_order_number INT;
+	DECLARE var_payment_id INT;
+	DECLARE var_address_id INT;
+
+	-- Select random customer
+	SELECT customer_id INTO var_customer_id
+	FROM shopping_cart
+	ORDER BY RAND()
+	LIMIT 1;
+
+	-- Generate random variables
+	SET var_order_number = FLOOR(100000 + RAND() * 999999);
+	SET var_payment_id = getPaymentId(var_customer_id);
+	SET var_address_id = getAddressId(var_customer_id);
+
+	-- Place order
+	INSERT INTO orders (order_number, customer_id, product_id, quantity, unit_price, payment_id, address_id)
+	SELECT var_order_number, var_customer_id, product_id, quantity, unit_price, var_payment_id, var_address_id
+	FROM shopping_cart_view
+	WHERE customer_id = var_customer_id;
+
+	-- Remove rows from shopping_cart
+	DELETE FROM shopping_cart
+	WHERE customer_id = var_customer_id;
+END$$
+
+DELIMITER ;
+
+----------------------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE FUNCTION getPaymentId (var_customer_id INT)
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+	DECLARE var_payment_id INT;
+	
+	SELECT payment_id INTO var_payment_id
+	FROM customer_payments
+	WHERE customer_id = var_customer_id
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	RETURN (var_payment_id);
+END$$
+
+DELIMITER ;
+
+----------------------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE FUNCTION getAddressId (var_customer_id INT)
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+	DECLARE var_address_id INT;
+	
+	SELECT address_id INTO var_address_id
+	FROM customer_addresses
+	WHERE customer_id = var_customer_id
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	RETURN (var_address_id);
+END$$
+
+DELIMITER ;
+
+---------------------------------------------------------------------------
+
+INSERT INTO shopping_cart(customer_id, product_id, quantity)
+VALUES (var_customer_id, var_product_id, var_quantity)
+ON DUPLICATE KEY UPDATE
+	quantity = quantity + VALUES(quantity);
+	
+--------------------------------------------------------------------
+
+-- Procedure for the event
+
+DELIMITER $$
+
+CREATE PROCEDURE shoppingEvent(IN var_add_to_cart INT, IN var_place_order INT)
+
+BEGIN
+	FOR i IN 1..var_add_to_cart
+	DO
+		CALL addToCart();
+	END FOR;
+	
+	FOR j IN 1..var_place_order
+	DO
+		CALL placeOrder();
+	END FOR;
+END$$
+
+DELIMITER ;
+
+---------------------------------------------------------------------
+
+REPORTS:
+
+-- Total income per customer
+CREATE VIEW customers_total_income_view AS
+
+SELECT c.customer_id, c.forename, c.surname, SUM(o.unit_price*o.quantity) AS total_income
+FROM customers AS c
+INNER JOIN orders AS o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id
+ORDER BY total_income DESC;
+
+-- Total income per year
+CREATE VIEW year_total_income_view AS
+
+SELECT YEAR(placed_on) AS year, SUM(quantity * unit_price) AS total_income
+FROM orders
+GROUP BY YEAR(placed_on)
+ORDER BY year DESC;
+
+-- Units sold per product
+CREATE VIEW units_sold_view AS
+
+SELECT p.product_id, p.product_name, p.unit_price, p.parent_category_id, SUM(o.quantity) AS units_sold
+FROM products AS p
+INNER JOIN orders AS o ON p.product_id = o.product_id
+GROUP BY product_id
+ORDER BY units_sold DESC;
+
+-- Total income per product
+CREATE VIEW products_total_income_view AS
+
+SELECT p.product_id, p.product_name, p.unit_price, p.parent_category_id, SUM(o.subtotal) AS total_income
+FROM products AS p
+INNER JOIN orders_view AS o ON p.product_id = o.product_id
+GROUP BY product_id
+ORDER BY total_income DESC;
+
+-- Total income per quarter
+CREATE VIEW quarter_total_income_view AS
+
+SELECT YEAR(placed_on) AS year, QUARTER(placed_on) AS quarter, SUM(quantity * unit_price) AS total_income
+FROM orders
+GROUP BY year, quarter
+ORDER BY year DESC, quarter ASC;

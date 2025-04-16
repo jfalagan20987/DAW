@@ -1,0 +1,16 @@
+package FiguresGeometriques;
+
+public class Rectangle extends FiguraGeometrica{
+	
+	private int amplada;
+	private int altura;
+	
+	public Rectangle(int posicioX, int posicioY) {
+		super(posicioX, posicioY);
+	}
+	
+	public String toString() {
+	return super.toString();
+	}
+
+}

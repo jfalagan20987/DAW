@@ -1,0 +1,28 @@
+package FiguresGeometriques;
+
+public class Rectangle extends FiguraGeometrica{
+	
+	private int amplada;
+	private int altura;
+	private int area;
+	private int perimetre;
+	
+	public Rectangle(int posicioX, int posicioY, int amplada, int altura) {
+		super(posicioX, posicioY);
+		this.amplada = amplada;
+		this.altura = altura;
+	}
+	
+	public void calculArea(){
+		area = amplada * altura;
+	}
+	
+	public void calculPerimetre() {
+		perimetre = (amplada*2) + (altura*2);
+	}
+	
+	public String toString() {
+	return super.toString() + "\n Àrea rectangle: " + area + "\n Perímetre rectangle: " + perimetre + "\n ------------------";
+	}
+
+}

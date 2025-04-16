@@ -1,0 +1,19 @@
+package Llibres;
+
+public class ArmariLlibres extends Llibre{
+	
+	Llibre[] llibres = new ArmariLlibres[10];
+	
+	private String genere;
+	
+	public ArmariLlibres(String titol, String autor, String genere) {
+		super(titol, autor);
+		this.genere = genere;
+	}
+	
+	public void mostrarLlibre() {
+		super.toString();
+		System.out.println("Gènere: "+ genere);
+	}
+
+}

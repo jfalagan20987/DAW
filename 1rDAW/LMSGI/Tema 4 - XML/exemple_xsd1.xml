@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<missatge xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:noNamespaceSchemaLocation="missatge.xsd">
+  <de>Ana</de>
+  <per_a>
+    <p>Rocío</p>
+  </per_a>
+  <missatge>
+    <p>hi sóc a la biblioteca</p>
+    <p>hi sóc a la biblioteca</p>
+  </missatge>
+  <data dia="10">
+    <any>2025</any>
+  </data>
+</missatge>

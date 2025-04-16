@@ -31,15 +31,18 @@ public class Biblioteca {
 				afegirLlibre();
 				break;
 			
-			/*case 2:
+			case 2:
 				modificarLlibre();
 				break;
 				
 			case 3:
 				eliminarLlibre();
-				break;*/
+				break;
 				
 			case 4:
+				System.out.println(aventura);
+				System.out.println(fantasia);
+				System.out.println(terror);
 				break;
 				
 			case 5:
@@ -70,36 +73,115 @@ public class Biblioteca {
 		opcio = sc.nextInt();
 		sc.nextLine();
 		
+		System.out.println("Introdueix el títol del llibre:");
+		titol = sc.nextLine();
+		
+		System.out.println("Introdueix el seu autor:");
+		autor = sc.nextLine();
+		llibre = new Llibre(titol, autor);
+		
 		switch (opcio) {
 		
 		case 1:
-			System.out.println("Introdueix el títol del llibre:");
-			titol = sc.nextLine();
-			
-			System.out.println("Introdueix el seu autor:");
-			autor = sc.nextLine();
-			llibre = new Llibre(titol, autor);
 			aventura.afegirLlibre(llibre);
 			break;
 		
 		case 2:
-			System.out.println("Introdueix el títol del llibre:");
-			titol = sc.nextLine();
-			
-			System.out.println("Introdueix el seu autor:");
-			autor = sc.nextLine();
-			llibre = new Llibre(titol, autor);
 			fantasia.afegirLlibre(llibre);
 			break;
 			
 		case 3:
-			System.out.println("Introdueix el títol del llibre:");
-			titol = sc.nextLine();
-			
-			System.out.println("Introdueix el seu autor:");
-			autor = sc.nextLine();
-			llibre = new Llibre(titol, autor);
 			terror.afegirLlibre(llibre);
+			break;
+			
+		default:
+			System.out.println("Opció incorrecte!");
+		}
+	}
+	
+	public static void modificarLlibre() {
+		
+		//Aquesta part no me surt!
+		
+		String titol;
+		String autor;
+		/*String nouTitol;
+		String nouAutor;*/
+		Llibre llibre;
+		/*Llibre nouLlibre;*/
+		int opcio = 0;
+		
+		System.out.println("De quin armari vols modificar un llibre?");
+		System.out.println("1. Aventura");
+		System.out.println("2. Fantasia");
+		System.out.println("3. Terror");
+		System.out.println("Tria una opció (1-3):");
+		opcio = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Introdueix el títol del llibre que vols modificar:");
+		titol = sc.nextLine();
+		
+		System.out.println("Introdueix el nou títol:");
+		titol = sc.nextLine();
+		
+		System.out.println("Introdueix el nou autor:");
+		autor = sc.nextLine();
+		llibre = new Llibre(titol, autor);
+		
+		switch (opcio) {
+		
+		case 1:
+			aventura.modificarLlibre(llibre);
+			break;
+		
+		case 2:
+			fantasia.modificarLlibre(llibre);
+			break;
+			
+		case 3:
+			terror.modificarLlibre(llibre);
+			break;
+			
+		default:
+			System.out.println("Opció incorrecte!");
+		}
+	}
+	
+	public static void eliminarLlibre() {
+		
+		String titol;
+		String autor;
+		Llibre llibre;
+		int opcio = 0;
+		
+		System.out.println("De quin armari vols eliminar un llibre?");
+		System.out.println("1. Aventura");
+		System.out.println("2. Fantasia");
+		System.out.println("3. Terror");
+		System.out.println("Tria una opció (1-3):");
+		opcio = sc.nextInt();
+		sc.nextLine(); 
+		
+		System.out.println("Introdueix el títol del llibre que vols eliminar:");
+		titol = sc.nextLine();
+		
+		System.out.println("Introdueix el seu autor:");
+		autor = sc.nextLine();
+		llibre = new Llibre(titol, autor);
+		
+		switch (opcio) {
+		
+		case 1:
+			aventura.eliminarLlibre(llibre);
+			break;
+		
+		case 2:
+			fantasia.eliminarLlibre(llibre);
+			break;
+			
+		case 3:
+			terror.eliminarLlibre(llibre);
 			break;
 			
 		default:

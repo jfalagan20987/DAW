@@ -1,0 +1,54 @@
+-- Generate new posts
+
+-- Get random user
+SELECT user_id
+FROM users
+ORDER BY RAND()
+LIMIT 1;
+
+-- Create a table with predefined post_text that make a bit a of sense and select them randomly??????
+
+DELIMITER $$
+
+CREATE PROCEDURE addPost()
+
+BEGIN
+
+	-- Declare variables
+	DECLARE var_user_id INT;
+	DECLARE var_post_content VARCHAR(500);
+	DECLARE var_num_followers INT;
+	
+	-- Get random user
+	SELECT user_id INTO var_user_id
+	FROM users;
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Get random post content
+	SELECT post_sample_content INTO var_post_content
+	FROM post_samples
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Publish post
+	INSERT INTO post (user_id, post_content)
+	VALUES (var_user_id, var_post_content);
+	
+	-- Generate new followers
+	SET var_num_followers = 
+	
+	-- Add followers
+	
+END$$
+
+DELIMITER ;
+
+
+
+
+
+-- Generate new followers
+
+-- Get random number of new followers
+SELECT 

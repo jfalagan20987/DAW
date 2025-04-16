@@ -1,0 +1,7 @@
+package Llibres;
+
+public class ArmariLlibres {
+	
+	Llibre[] llibres = new ArmariLlibres[10];
+
+}

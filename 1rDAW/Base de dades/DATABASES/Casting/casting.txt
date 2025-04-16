@@ -1,0 +1,403 @@
+CREATE TABLE actors (
+	actor_id INT PRIMARY KEY AUTO_INCREMENT,
+	forename VARCHAR(100),
+	surname VARCHAR(100),
+	actor_gender ENUM('female', 'male', 'non-binary'),
+	birthdate DATE,
+	actor_height INT,
+	actor_weight INT,
+	actor_hair_color VARCHAR(100),
+	actor_race ENUM('black', 'caucasian', 'asian')
+	);
+	
+
+INSERT INTO actors(forename, surname, actor_gender, birthdate, actor_height, actor_weight, actor_hair_color, actor_race)
+VALUES
+	
+------------------------------------------------------------------------------	
+	
+CREATE TABLE characters (
+	character_id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(100),
+	importance ENUM('principal', 'secondary'),
+	character_gender ENUM('female', 'male', 'non-binary'),
+	character_height INT,
+	character_weight INT,
+	character_hair_color VARCHAR(100),
+	character_race ENUM('black', 'caucasian', 'asian')
+	);
+	
+INSERT INTO characters(name, importance, character_gender, character_height, character_weight, character_hair_color, character_race)
+VALUES
+
+-------------------------------------------------------------------------	
+
+CREATE TABLE movies (
+	movie_id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(100),
+	director VARCHAR(100),
+	genre SET('horror', 'sci-fi', 'adventure', 'romantic', 'comedy', 'drama', 'action'),
+	budget INT,
+	release_year INT
+	);
+	
+INSERT INTO movies(title, director, genre, budget, release_year)
+VALUES ('The Lord of the Rings: The Fellowship of the Ring', 'Peter Jackson', 'adventure', 93000000, 2001);
+	
+-------------------------------------------------------------------------
+
+CREATE TABLE skills (
+	skill_id INT PRIMARY KEY AUTO_INCREMENT,
+	skill_name VARCHAR(50)
+	);
+
+INSERT INTO skills(skill_name)
+VALUES ('martial_arts'),
+	('drive_car'),
+	('drive_motorbike'),
+	('swimming'),
+	('climbing'),
+	('dancing'),
+	('singing');
+	
+-------------------------------------------------------------------------
+
+CREATE TABLE languages (
+	language_id INT PRIMARY KEY AUTO_INCREMENT,
+	language_name VARCHAR(50)
+	);
+	
+INSERT INTO languages(language_name)
+VALUES
+
+--------------------------------------------------------------------------
+
+CREATE TABLE actors_languages (
+	actor_id INT,
+	language_id INT,
+	FOREIGN KEY (actor_id) REFERENCES actors(actor_id),
+	FOREIGN KEY (language_id) REFERENCES languages(language_id),
+	PRIMARY KEY (actor_id, language_id)
+	);
+	
+CREATE TABLE characters_languages (
+	character_id INT,
+	language_id INT,
+	FOREIGN KEY (character_id) REFERENCES characters(character_id),
+	FOREIGN KEY (language_id) REFERENCES languages(language_id),
+	PRIMARY KEY (character_id, language_id)
+	);
+
+--------------------------------------------------------------------------
+
+STORED PROCEDURE
+
+DELIMITER $$
+CREATE PROCEDURE casting_traits (IN var_character_id INT, IN var_movie_id INT, IN var_casting_date TIMESTAMP)
+
+BEGIN
+	-- Declare variables
+	DECLARE var_height INT;
+	DECLARE var_weight INT;
+	DECLARE var_race VARCHAR(50);
+	
+	-- Get info from the character
+	SELECT character_height, character_weight, character_race INTO var_height, var_weight, var_race
+	FROM characters
+	WHERE character_id = var_character_id;
+    
+	-- Insert into casting table
+	INSERT INTO casting(movie_id, character_id, actor_id, casting_date)
+	SELECT var_movie_id, var_character_id, actor_id, var_casting_date
+	FROM actors
+	WHERE actor_height BETWEEN var_height-5 AND var_height+5
+	AND actor_weight BETWEEN var_weight-10 AND var_weight+10
+	AND actor_race = var_race;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spoken_languages (IN var_actor_id INT)
+
+BEGIN
+	SELECT a.actord_id, l.language_id, l.language_name
+	FROM actors_languages AS a
+	INNER JOIN languages AS l ON a.language_id = l.language_id
+	WHERE a.actor_id = var_actor_id
+	ORDER BY l.language_name ASC;
+END$$
+DELIMITER ;
+
+
+
+SELECT c.*, 
+SELECT COUNT(skill_id)
+FROM characters_skills
+WHERE character_id = c.character_id
+FROM casting AS c;
+--------------------------------------------------------------
+CASTING VIEW - SKILL COMPATIBILITY
+
+SELECT c.actor_id, c.character_id,
+(SELECT COUNT(ask.skill_id)
+FROM actors_skills AS ask
+INNER JOIN characters_skills AS csk ON ask.skill_id = csk.skill_id
+WHERE ask.actor_id = c.actor_id AND csk.character_id = c.character_id)
+FROM casting AS c;
+
+
+CREATE VIEW casting_view AS 
+SELECT
+c.*,
+
+(SELECT COUNT(skill_id)
+FROM characters_skills
+WHERE character_id = c.character_id) AS character_skills,
+
+(SELECT COUNT(ask.skill_id)
+FROM actors_skills AS ask
+INNER JOIN characters_skills AS csk ON ask.skill_id = csk.skill_id
+WHERE ask.actor_id = c.actor_id AND csk.character_id = c.character_id) AS actor_skills,
+ROUND(
+(
+(SELECT COUNT(ask.skill_id)
+FROM actors_skills AS ask
+INNER JOIN characters_skills AS csk ON ask.skill_id = csk.skill_id
+WHERE ask.actor_id = c.actor_id AND csk.character_id = c.character_id)
+/
+(SELECT COUNT(skill_id)
+FROM characters_skills
+WHERE character_id = c.character_id)
+)*100,0)
+AS skill_compatibility
+
+
+FROM casting AS c;
+------------------------------------------------------------------
+
+COALESCE (kg_to_pounds(70), 'UNKNOWN')
+
+---------------------------------------------------------------------
+
+CREATE VIEW longterm_customers_view AS
+
+SELECT c.customer_id, rsv.number_days
+FROM customers AS c
+INNER JOIN reservations_view AS rsv ON c.customer_id = rsv.customer_id
+WHERE rsv.number_days > (SELECT CEILING(AVG(number_days))
+						FROM reservations_view)
+ORDER BY rsv.number_days DESC;
+
+--------------------------------------------------------------------
+
+SELECT al.language_id, l.language_name, al.actor_id, CONCAT(a.forename, ' ', a.surname) AS actor_name
+FROM actors_languages AS al
+LEFT JOIN languages AS l ON al.language_id = l.language_id
+LEFT JOIN actors AS a ON al.actor_id = a.actor_id
+ORDER BY l.language_name ASC, actor_name ASC;
+
+---------------------------------------------------------------------
+
+SELECT customer_id, SUM(total) AS total_income
+FROM reservations_view
+GROUP BY customer_id
+ORDER BY total_income DESC
+LIMIT 5;
+
+--------------------------------------------------------------------
+
+SELECT s.skill_name, CONCAT(a.forename, ' ', a.surname) AS actor_name
+FROM skills AS s
+LEFT JOIN actors_skills AS ask ON s.skill_id = ask.skill_id
+LEFT JOIN actors AS a ON ask.actor_id = a.actor_id
+ORDER BY s.skill_name ASC, actor_name ASC;
+
+------------------------------------------------------------------------
+
+SELECT s.skill_name, CONCAT(a.forename, ' ', a.surname) AS actor_name
+FROM actors_skills AS ask
+RIGHT JOIN skills AS s ON ask.skill_id = s.skill_id
+LEFT JOIN actors AS a ON ask.actor_id = a.actor_id
+ORDER BY s.skill_name ASC, actor_name ASC;
+
+
+------------------------------------------------------------------------
+
+-- New CASTING table
+
+CREATE TABLE casting2 (
+	movie_id INT,
+	character_id INT,
+	actor_id INT,
+	casting_date TIMESTAMP,
+	expected_salary DECIMAL(2,1),
+	agreed_salary DECIMAL(2,1),
+	skill_compatibility INT,
+	language_compatibility INT,
+	casting_order INT,
+	is_hired BOOLEAN,
+	FOREIGN KEY (movie_id) REFERENCES movies(movie_id),
+	FOREIGN KEY (character_id) REFERENCES characters(character_id),
+	FOREIGN KEY (actor_id) REFERENCES actors(actor_id),
+	PRIMARY KEY (movie_id, character_id, actor_id)
+	);
+-----------------------------------------------------------------------------------------------
+
+STORED FUNCTION age
+
+DELIMITER $$
+
+CREATE FUNCTION age (var_birthdate DATE)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+	DECLARE var_age INT;
+    
+    SET var_age = TIMESTAMPDIFF(YEAR, var_birthdate, CURRENT_DATE);
+    RETURN(var_age);
+END$$
+
+DELIMITER ;
+
+------------------------------------------------------------------
+
+STORED FUNCTION kg_to_lbs
+
+DELIMITER $$
+
+CREATE FUNCTION weight_to_lbs (var_weight_kg INT)
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+	DECLARE var_weight_lbs INT;
+    SET var_weight_lbs = ROUND(var_weight_kg * 2.2, 0);
+    RETURN (var_weight_lbs);
+END$$
+
+DELIMITER ;
+
+---------------------------------------------------------------
+TRIGGER
+
+DELIMITER $$
+
+CREATE TRIGGER del_tr_actor
+AFTER DELETE ON casting
+FOR EACH ROW
+BEGIN
+	DELETE FROM acting
+    WHERE movie_id = OLD.movie_id AND character_id = OLD.character_id AND actor_id = OLD.actor_id;
+END$$
+
+DELIMITER ;
+
+--------------------------------------------------------------
+TRIGGER
+
+DELIMITER $$
+
+CREATE TRIGGER ins_tr_acting
+AFTER INSERT ON acting
+FOR EACH ROW
+BEGIN
+    INSERT INTO casting(movie_id, character_id, actor_id, casting_date, casting_position, is_hired, agreed_salary)
+    VALUES (NEW.movie_id, NEW.character_id, NEW.actor_id, CURRENT_TIMESTAMP, 1, 1, NEW.agreed_salary);
+END$$
+
+DELIMITER ;
+
+-----------------------------------------------------------------
+SKILL COMPATIBILITY
+
+DELIMITER $$
+
+CREATE FUNCTION skill_compatibility (var_movie_id INT, var_character_id INT, var_actor_id INT)
+RETURNS INT
+DETERMINISTIC
+
+BEGIN
+		DECLARE var_skill_compatibility INT;
+        
+        SET var_skill_compatibility =
+		ROUND(
+        (
+        (SELECT COUNT(ask.skill_id)
+        FROM actors_skills AS ask
+        INNER JOIN characters_skills AS csk ON ask.skill_id = csk.skill_id
+        WHERE ask.actor_id = var_actor_id AND csk.character_id = var_character_id)
+        /
+        (SELECT COUNT(skill_id)
+        FROM characters_skills
+        WHERE character_id = var_character_id)
+        )*100,0);
+        
+        RETURN (var_skill_compatibility);
+END$$
+
+DELIMITER ;
+
+------------------------------------------------------------------
+
+LANGUAGE COMPATIBILITY
+
+DELIMITER $$
+
+CREATE FUNCTION language_compatibility (var_movie_id INT, var_character_id INT, var_actor_id INT)
+RETURNS DECIMAL
+DETERMINISTIC
+
+BEGIN
+	DECLARE var_language_compatibility DECIMAL;
+    
+    SET var_language_compatibility =
+    ROUND(
+        (
+            (SELECT COUNT(al.language_id)
+             FROM actors_languages AS al
+             INNER JOIN characters_languages AS cl ON al.language_id = cl.language_id
+             WHERE al.actor_id = var_actor_id AND cl.character_id = var_character_id)
+            /
+            (SELECT COUNT(language_id)
+             FROM characters_languages
+             WHERE character_id = var_character_id)
+            )*100,0);
+            
+            RETURN (var_language_compatibility);
+END$$
+
+DELIMITER ;
+
+----------------------------------------------------------
+
+INSERT in CASTING procedure
+
+DELIMITER $$
+
+CREATE PROCEDURE casting_insert(IN var_character_id INT, IN var_movie_id INT, IN var_casting_date TIMESTAMP)
+
+BEGIN
+	-- Declare variables
+	DECLARE var_height INT;
+	DECLARE var_weight INT;
+	DECLARE var_race VARCHAR(50);
+	DECLARE var_actor_id INT;
+	
+	-- Get info from the character
+	SELECT character_height, character_weight, character_race INTO var_height, var_weight, var_race
+	FROM characters
+	WHERE character_id = var_character_id;
+
+	-- Insert into casting table
+	INSERT INTO casting2(movie_id, character_id, actor_id, casting_date, expected_salary, skill_compatibility, language_compatibility)
+	SELECT var_movie_id, var_character_id, actors.actor_id, var_casting_date, (SELECT COALESCE(AVG(agreed_salary),0) FROM acting WHERE actor_id = actors.actor_id), skill_compatibility(var_movie_id, var_character_id, actor_id), language_compatibility(var_movie_id, var_character_id, actor_id)
+	FROM actors
+	WHERE actor_height BETWEEN var_height-5 AND var_height+5
+	AND actor_weight BETWEEN var_weight-10 AND var_weight+10
+	AND actor_race = var_race;
+	
+END$$
+
+DELIMITER ;

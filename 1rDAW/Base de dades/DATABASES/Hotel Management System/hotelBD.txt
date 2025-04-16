@@ -1,0 +1,355 @@
+Customer requirements
+
+- Handle reservations (whom?, room?, time?)
+- Extras: services, excursions, activities, dinner plans, laundry
+- Costs
+- Employee information / online capabilities
+- Maintenance -> report -> fix (call reception or web app)
+- Membership Program
+- Clean rooms (changeover and checkouts)
+
+---------------------------------------------------------------
+TABLES
+
+CREATE TABLE customers(
+	customer_id INT PRIMARY KEY AUTO_INCREMENT,
+	forename VARCHAR(50),
+	surname VARCHAR(50),
+	phone_number VARCHAR(50),
+	email VARCHAR(50),
+	address VARCHAR(100)
+	);
+
+
+CREATE TABLE room_types(
+	type_id INT PRIMARY KEY AUTO_INCREMENT,
+	type_name VARCHAR(50),
+	price INT
+	);
+
+
+CREATE TABLE rooms(
+	room_number INT PRIMARY KEY,
+	floor_number INT,
+	room_type INT,
+	FOREIGN KEY (room_type) REFERENCES room_types(type_id)
+	);
+	
+
+CREATE TABLE reservations(
+	reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+	customer_id INT,
+	room_number INT,
+	check_in DATE,
+	check_out DATE,
+	price_per_day INT,
+	extras LONGTYPE,
+	FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+	FOREIGN KEY (room_number) REFERENCES rooms(room_number)
+	);
+
+
+
+INSERT INTO customers (forename, surname, nif, address, email, phone_number)
+VALUES ('Jon', 'Eidson', '21212458F', 'Paseo Moreras 15', 'jon@gmail.com', '+34 613121415'),
+('John', 'Smith', '31321131G', 'Carrer Forn 12', 'john@gmail.com', '+34 611215162'),
+('Alex', 'Caruso', '42365432D', 'Address 1', 'acaruso@gmail.com', '+34 658744496'),
+('Isaiah', 'Hartenstein', '84475662G', 'Address 2', 'ihart@gmail.com', '+34 632147856'),
+('Chet', 'Holmgren', '87432243T', 'Address 3', 'chet@gmail.com', '+34 687221158'),
+('Aaron', 'Wiggins', '41515648B', 'Tulsa St, 5', 'awiggs@gmail.com', '+34 611859754'),
+('Isaiah', 'Joe', '51248869X', 'Brick Town, 17', 'izai@gmail.com', '+34 655200788'),
+('Shai', 'Gilgeous-Alexander', '55217748S', 'Aura Street, 2', 'sga@gmail.com', '+34 699578410'),
+('Luguentz', 'Dort', '55289677L', 'Lockdown Avenue, 4', 'lubeast@gmail.com', '+34 611098862'),
+('Jalen', 'Williams', '41213377W', 'New Address, 34', 'jdub@gmail.com', '+34 601227399'),
+
+('Kenrich', 'Williams', '41236789H', 'Hustle Street, 34', 'kenny@gmail.com', '+34 678954123'),
+('Cason', 'Wallace', '41512057B', 'Caso Street, 22', 'cwallace@gmail.com', '+34 647895855'),
+('Jaylin', 'Williams', '47202589W', 'Sunrise Avenue, 6', 'jwill@gmail.com', '+34 698001232'),
+('Nikola', 'Topic', '41789456T', 'Talent Avenue, 44', 'topicthunder@gmail.com', '+34 600125587');
+
+
+INSERT INTO room_types(type_name, price)
+VALUES('standard', 70),
+	('single', 60),
+	('deluxe', 90),
+	('suite', 120);
+	
+
+INSERT INTO rooms(room_number, floor_number, room_type)
+VALUES(101, 1, 1),
+	(102, 1, 2),
+	(103, 1, 1),
+	(104, 1, 1),
+	(105, 1, 1),
+	(106, 1, 2),
+	(107, 1, 2),
+	(108, 1, 3),
+	(109, 1, 3),
+	(110, 1, 3),
+	(201, 2, 2),
+	(202, 2, 2),
+	(203, 2, 1),
+	(204, 2, 2),
+	(205, 2, 2),
+	(206, 2, 1),
+	(207, 2, 1),
+	(208, 2, 3),
+	(209, 2, 3),
+	(210, 2, 4),
+	(301, 3, 2),
+	(302, 3, 2),
+	(303, 3, 2),
+	(304, 3, 3),
+	(305, 3, 3),
+	(306, 3, 3),
+	(307, 3, 3),
+	(308, 3, 4),
+	(309, 3, 4),
+	(310, 3, 4),
+	(401, 4, 4),
+	(402, 4, 4),
+	(403, 4, 4),
+	(404, 4, 4);
+-------------------------------------------------
+
+STORED PROCEDURES
+Insert random reservations:
+
+DELIMITER $$
+
+CREATE PROCEDURE randomReservationInsert()
+
+BEGIN
+	-- Variables needed
+	DECLARE var_customer_id INT;
+	DECLARE var_room_number INT;
+	DECLARE var_check_in DATE;
+	DECLARE var_check_out DATE;
+	DECLARE var_price_per_day INT;
+	
+	-- Get dates
+	SET var_check_in = SUBDATE(CURRENT_DATE, INTERVAL (FLOOR(1+RAND()*400)) DAY);
+	SET var_check_out = DATE_ADD(var_check_in, INTERVAL (FLOOR(RAND()*7+1)) DAY);
+	
+	-- Get random customer
+	SELECT customer_id INTO var_customer_id
+	FROM customers
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Get an available room
+	SELECT room_number INTO var_room_number
+	FROM rooms
+	WHERE room_number NOT IN (SELECT room_number
+						FROM reservations
+						WHERE check_in <= var_check_out
+						AND check_out >= var_check_in)
+	ORDER BY RAND()
+	LIMIT 1;
+	
+	-- Get room price
+	SELECT price INTO var_price_per_day
+	FROM room_types
+	WHERE type_id = (SELECT room_type
+					FROM rooms
+					WHERE room_number = var_room_number);
+	
+	-- Create the reservation
+	INSERT INTO reservations(customer_id, room_number, check_in, check_out, price_per_day)
+	VALUES(var_customer_id, var_room_number, var_check_in, var_check_out, var_price_per_day);
+END$$
+
+DELIMITER ;
+
+----------------------------------------------------------------------------------------
+
+CREATE VIEW reservations_view AS
+
+SELECT reservation_id, customer_id, room_number, check_in, check_out, DATEDIFF(check_out, check_in) AS total_nights, price_per_night, (price_per_night*(DATEDIFF(check_out, check_in))) AS total_price
+FROM reservations;
+
+---------------------------------------------------------------------------------------
+
+CREATE TABLE services(
+	service_id INT PRIMARY KEY AUTO_INCREMENT,
+	service_category VARCHAR(50),
+	service_name VARCHAR(50),
+	service_price INT
+	);
+	
+INSERT INTO services(service_category, service_name, service_price)
+VALUES('spa', '1h session', 40),
+	('spa', '1h massage', 10),
+	('gym', '1h session', 10),
+	('restaurant', 'breakfast', 20),
+	('restaurant', 'lunch', 30),
+	('restaurant', 'dinner', 30);
+	
+ALTER TABLE reservations
+ADD COLUMN extras_json JSON;
+
+
+UPDATE reservations
+SET extras_json = '[
+  {"spa":[
+    {
+      "total":80,
+      "tickets":[
+        {
+          "service_category": "spa",
+          "ticket_number": 1845,
+          "service_date": "2025-04-05",
+          "quantity": 1,
+          "unit_price": 40 
+        },
+
+        {
+          "service_category": "spa",
+          "ticket_number": 1878,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 40
+        }
+      ]
+    }
+  ]},
+
+  {"gym":[
+    {
+      "total":30,
+      "tickets":[
+        {
+          "service_category": "gym",
+          "ticket_number": 3775,
+          "service_date": "2025-04-05",
+          "quantity": 2,
+          "unit_price": 10 
+        },
+
+        {
+          "service_category": "gym",
+          "ticket_number": 3896,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 10
+        }
+      ]
+    }
+  ]},
+
+  {"restaurant":[
+    {
+      "total":110,
+      "tickets":[
+        {
+          "service_category": "restaurant",
+          "ticket_number": 3004,
+          "service_date": "2025-04-05",
+          "quantity": 1,
+          "unit_price": 60 
+        },
+
+        {
+          "service_category": "restaurant",
+          "ticket_number": 3570,
+          "service_date": "2025-04-06",
+          "quantity": 1,
+          "unit_price": 50
+        }
+      ]
+    }
+  ]}
+]';
+  
+-- Another JSON column to add the guests of the room in the reservations table
+ALTER TABLE reservations
+ADD COLUMN guests_json JSON;
+
+---------------------------------------------------------------------------------------
+
+-- Stored Function to swap rooms
+
+DELIMITER $$
+
+CREATE FUNCTION swapRooms(var_reservation_id INT)
+RETURNS INT
+DETERMINISTIC
+	
+BEGIN
+	
+END$$
+
+DELIMITER ;
+
+----------------------------------------------------------------------------------
+
+-- How to read all the tickets (json files)
+
+DELIMITER $$
+
+CREATE PROCEDURE readTickets(IN var_reservation_id INT)
+BEGIN
+	-- Needed variables
+    DECLARE var_length INT;
+	DECLARE counter INT DEFAULT 0;
+    
+    -- Set length
+	SELECT JSON_LENGTH(extras_json) INTO var_length
+	FROM reservations
+	WHERE reservation_id = var_reservation_id;
+    
+	-- Loop
+    WHILE counter < var_length DO
+    	SELECT JSON_EXTRACT(extras_json, CONCAT('$[', counter, '].service_category')) AS service_category,
+		JSON_EXTRACT(extras_json, CONCAT('$[', counter, '].service_name')) AS service_name,
+		JSON_EXTRACT(extras_json, CONCAT('$[', counter, '].service_price')) AS service_price
+		FROM reservations
+		WHERE reservation_id = var_reservation_id;
+		
+		SET counter = counter + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+COMPRESS / UNCOMPRESS
+HASH
+ENCRYPT / DECRYPT
+
+
+ALTER TABLE customers
+ADD COLUMN pwd VARCHAR(100),
+	comp_pwd VARBINARY(100),
+	uncomp_pwd VARCHAR(100),
+	hash_pwd VARCHAR(200),
+	encrypt_pwd VARBINARY(100),
+	decrypt_pwd VARCHAR(100);
+
+
+
+SET @mykey = 'xyz';
+SET @shahex =  SHA2(@mykey, 512);
+SET @key = UNHEX(@shahex);
+
+UPDATE customers
+SET comp_pwd = COMPRESS(pwd);
+
+UPDATE customers
+SET uncomp_pwd = UNCOMPRESS(comp_pwd);
+
+UPDATE customers
+SET hash_pwd = SHA2(pwd, 512);
+
+UPDATE customers
+SET encrypt_pwd = AES_ENCRYPT(pwd, @key);
+
+UPDATE customers
+SET decrypt_pwd = AES_DECRYPT(encrypt_pwd, @key);

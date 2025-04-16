@@ -1,0 +1,26 @@
+DATABASES
+
+Rentacar DB
+---------------------
+	track car breakdowns (incidents table and view)
+	add classes to cars
+	add total_income per car/customer/country
+---------------------
+
+
+
+
+Online Shop DB
+---------------------
+- DDL
+- DML
+---------------------
+
+
+
+
+Casting DB
+---------------------
+- DDL
+- DML
+---------------------
